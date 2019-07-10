@@ -1,0 +1,2283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PCS_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="Account_Code" />
+          </Key>
+          <Property Name="Account_Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CostCenterId_FK" Type="int" Nullable="false" />
+          <Property Name="ExpenseId_FK" Type="int" Nullable="false" />
+          <Property Name="Account_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Create_Date" Type="date" Nullable="false" />
+          <Property Name="Created_by" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Closed_date" Type="date" Nullable="false" />
+          <Property Name="Closed_by" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cost_Center">
+          <Key>
+            <PropertyRef Name="CostCenterId" />
+          </Key>
+          <Property Name="CostCenterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="DivisionId_FK" Type="int" Nullable="false" />
+          <Property Name="DepartmentId_FK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Department_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DivisionId_FK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Division">
+          <Key>
+            <PropertyRef Name="DivisionId" />
+          </Key>
+          <Property Name="DivisionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Division_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Exchange_Rate">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Abbreviation" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Rate" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BankCTRL" Type="int" Nullable="false" />
+          <Property Name="DiffCTRL" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Expense">
+          <Key>
+            <PropertyRef Name="ExpenseId" />
+          </Key>
+          <Property Name="ExpenseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Short" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Actype" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Exgroup" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BANK" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Suffmask" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DivId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Expense_Category">
+          <Key>
+            <PropertyRef Name="Expense_Category_Id" />
+          </Key>
+          <Property Name="Expense_Category_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemCategoryId_FK" Type="int" Nullable="false" />
+          <Property Name="ExpenseId_FK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Item_Category">
+          <Key>
+            <PropertyRef Name="ItemCategoryId" />
+          </Key>
+          <Property Name="ItemCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Location" />
+          </Key>
+          <Property Name="Location" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="CostCenterId_FK" Type="int" Nullable="false" />
+          <Property Name="Deptanal" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MRC">
+          <Key>
+            <PropertyRef Name="MRC_Id" />
+          </Key>
+          <Property Name="MRC_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId_FK" Type="int" Nullable="false" />
+          <Property Name="AccountId_FK" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Unit" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Pack_Size" Type="int" Nullable="false" />
+          <Property Name="UnitRate" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OtherCharges" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TermsCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemCategoryId_FK" Type="int" Nullable="false" />
+          <Property Name="ProductType" Type="int" Nullable="false" />
+          <Property Name="PackSize" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Purchase_Header">
+          <Key>
+            <PropertyRef Name="OrderNo" />
+          </Key>
+          <Property Name="OrderNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CostCenterId_FK" Type="int" Nullable="false" />
+          <Property Name="AccountId_FK" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Created_by" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Created_Date" Type="date" Nullable="false" />
+          <Property Name="AmendedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AmendedDate" Type="date" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FinanceApproved" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OperationApproved" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="InitalsBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Purchase_Transaction">
+          <Key>
+            <PropertyRef Name="Purchase_TransactionId" />
+          </Key>
+          <Property Name="Purchase_TransactionId" Type="int" Nullable="false" />
+          <Property Name="OrderNo_FK" Type="int" Nullable="false" />
+          <Property Name="CostCenterId_FK" Type="int" Nullable="false" />
+          <Property Name="ProductId_FK" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="GrossValue" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ReceiveDate" Type="date" Nullable="false" />
+          <Property Name="ReceiveBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VarifiedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VarifiedDate" Type="date" Nullable="false" />
+          <Property Name="ItemCategoryId_FK" Type="int" Nullable="false" />
+          <Property Name="TermsCode" Type="int" Nullable="false" />
+          <Property Name="VerifiedTransactionId_FK" Type="int" Nullable="false" />
+          <Property Name="AccountId_FK" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TermsPrinted" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Suffix" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Suffix">
+          <Key>
+            <PropertyRef Name="Suffix_Id" />
+          </Key>
+          <Property Name="Suffix_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Suffix" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Expense" Type="int" Nullable="false" />
+          <Property Name="DivisionId_FK" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Short" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address4" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address5" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Currency_FK" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DivisionId_FK" Type="int" Nullable="false" />
+          <Property Name="CreditTerms" Type="int" Nullable="false" />
+          <Property Name="VAT_Group_FK" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VAT_Code_FK" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Acccount_Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NLCONTROL" Type="int" Nullable="false" />
+          <Property Name="Supplier_Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplier_Addition">
+          <Key>
+            <PropertyRef Name="Account" />
+          </Key>
+          <Property Name="Account" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailPO" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplier_Quotes">
+          <Key>
+            <PropertyRef Name="OrderNo" />
+          </Key>
+          <Property Name="OrderNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Account1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="File1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Account2" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="File2" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Acccount3" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="File3" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Account4" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="File4" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Account5" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="File5" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplier_SLA">
+          <Key>
+            <PropertyRef Name="Supplier_SLAId" />
+          </Key>
+          <Property Name="Supplier_SLAId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId_FK" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SLA_Image" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Teams">
+          <Key>
+            <PropertyRef Name="TeamId" />
+          </Key>
+          <Property Name="TeamId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeamName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Terms_Condition">
+          <Key>
+            <PropertyRef Name="TermsCode" />
+          </Key>
+          <Property Name="TermsCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmployeeNo" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DepartmentId_FK" Type="int" Nullable="false" />
+          <Property Name="CostCenter_FK" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="int" Nullable="false" />
+          <Property Name="Role" Type="int" Nullable="false" />
+          <Property Name="PrintFormat" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DivisionAccess" Type="int" Nullable="false" />
+          <Property Name="Grade" Type="int" Nullable="false" />
+          <Property Name="OperationsApprover" Type="bit" Nullable="false" />
+          <Property Name="FinanceApprover" Type="bit" Nullable="false" />
+          <Property Name="VendModAccess" Type="bit" Nullable="false" />
+          <Property Name="Signature" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TeamApplicable" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TeamId_FK" Type="int" Nullable="false" />
+          <Property Name="Out_Of_Office" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="Comments" Type="datetime" Nullable="false" />
+          <Property Name="Location_FK" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Terminal" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User_Authorise">
+          <Key>
+            <PropertyRef Name="UserAuthorisationId" />
+          </Key>
+          <Property Name="UserAuthorisationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId_FK" Type="int" Nullable="false" />
+          <Property Name="User_Authorisor1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Auth1_Llimit" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Auth1_Ulimit" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="User_Authorisor2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Auth2_Llimit" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Auth2_Ulimit" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="User_Authorisor3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Auth3_Llimit" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Auth3_Ulimit" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="User_Authorisor4" Type="nvarchar" MaxLength="50" />
+          <Property Name="Auth4_Llimit" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Auth4_Ulimit" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="User_Authorisor5" Type="nvarchar" MaxLength="50" />
+          <Property Name="Auth5_Llimit" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Auth5_Ulimit" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="User_Authorisor6" Type="nvarchar" MaxLength="50" />
+          <Property Name="Auth6_Llimit" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Auth6_Ulimit" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="User_Authorisor7" Type="nvarchar" MaxLength="50" />
+          <Property Name="Auth7_Llimit" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Auth7_Ulimit" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="User_Authorisor8" Type="nvarchar" MaxLength="50" />
+          <Property Name="Auth8_Llimit" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Auth8_Ulimit" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="User_Authorisor9" Type="nvarchar" MaxLength="50" />
+          <Property Name="Auth9_Llimit" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Auth9_Ulimit" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="User_Authorisor10" Type="nvarchar" MaxLength="50" />
+          <Property Name="Auth10_Llimit" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Auth10_Ulimit" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="User_Setup">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ReceiveNotification" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VAT_Code">
+          <Key>
+            <PropertyRef Name="VAT_Code" />
+          </Key>
+          <Property Name="VAT_Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VATCodeDesc" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VAT_Group">
+          <Key>
+            <PropertyRef Name="VAT_Group" />
+          </Key>
+          <Property Name="VAT_Group" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VATGroupDesc" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SLADJUST" Type="int" Nullable="false" />
+          <Property Name="PLADJUST" Type="int" Nullable="false" />
+          <Property Name="SDBASIS" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EUGROUP" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Verified_Transaction">
+          <Key>
+            <PropertyRef Name="Verified_TransactionId" />
+          </Key>
+          <Property Name="Verified_TransactionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderNo_FK" Type="int" Nullable="false" />
+          <Property Name="CostCenter_FK" Type="int" Nullable="false" />
+          <Property Name="Supplier_Ref" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiscRef" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Document_Date" Type="date" Nullable="false" />
+          <Property Name="DueDate" Type="date" Nullable="false" />
+          <Property Name="AccountCode" Type="int" Nullable="false" />
+          <Property Name="Suffix" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VATCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Narrative" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AccountId_FK" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PurchaseTransactionRef" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PostingDate" Type="date" Nullable="false" />
+          <Property Name="VarifiedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VarifiedDate" Type="date" Nullable="false" />
+          <Property Name="ExportFlag" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Accounts_Cost_Center">
+          <End Role="Cost_Center" Type="Self.Cost_Center" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cost_Center">
+              <PropertyRef Name="CostCenterId" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="CostCenterId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accounts_Expense">
+          <End Role="Expense" Type="Self.Expense" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expense">
+              <PropertyRef Name="ExpenseId" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="ExpenseId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cost_Center_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Cost_Center" Type="Self.Cost_Center" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="Cost_Center">
+              <PropertyRef Name="DepartmentId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cost_Center_Division">
+          <End Role="Division" Type="Self.Division" Multiplicity="1" />
+          <End Role="Cost_Center" Type="Self.Cost_Center" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Division">
+              <PropertyRef Name="DivisionId" />
+            </Principal>
+            <Dependent Role="Cost_Center">
+              <PropertyRef Name="DivisionId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_Division">
+          <End Role="Division" Type="Self.Division" Multiplicity="1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Division">
+              <PropertyRef Name="DivisionId" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="DivisionId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Expense_Category_Expense">
+          <End Role="Expense" Type="Self.Expense" Multiplicity="1" />
+          <End Role="Expense_Category" Type="Self.Expense_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expense">
+              <PropertyRef Name="ExpenseId" />
+            </Principal>
+            <Dependent Role="Expense_Category">
+              <PropertyRef Name="ExpenseId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Expense_Category_Item_Category">
+          <End Role="Item_Category" Type="Self.Item_Category" Multiplicity="1" />
+          <End Role="Expense_Category" Type="Self.Expense_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item_Category">
+              <PropertyRef Name="ItemCategoryId" />
+            </Principal>
+            <Dependent Role="Expense_Category">
+              <PropertyRef Name="ItemCategoryId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Location_Cost_Center">
+          <End Role="Cost_Center" Type="Self.Cost_Center" Multiplicity="1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cost_Center">
+              <PropertyRef Name="CostCenterId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="CostCenterId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MRC_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="MRC" Type="Self.MRC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="MRC">
+              <PropertyRef Name="ProductId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MRC_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="MRC" Type="Self.MRC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="MRC">
+              <PropertyRef Name="AccountId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Item_Category">
+          <End Role="Item_Category" Type="Self.Item_Category" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item_Category">
+              <PropertyRef Name="ItemCategoryId" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="ItemCategoryId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Header_Cost_Center">
+          <End Role="Cost_Center" Type="Self.Cost_Center" Multiplicity="1" />
+          <End Role="Purchase_Header" Type="Self.Purchase_Header" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cost_Center">
+              <PropertyRef Name="CostCenterId" />
+            </Principal>
+            <Dependent Role="Purchase_Header">
+              <PropertyRef Name="CostCenterId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Header_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Purchase_Header" Type="Self.Purchase_Header" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Purchase_Header">
+              <PropertyRef Name="AccountId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Transaction_Cost_Center">
+          <End Role="Cost_Center" Type="Self.Cost_Center" Multiplicity="1" />
+          <End Role="Purchase_Transaction" Type="Self.Purchase_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cost_Center">
+              <PropertyRef Name="CostCenterId" />
+            </Principal>
+            <Dependent Role="Purchase_Transaction">
+              <PropertyRef Name="CostCenterId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Transaction_Item_Category">
+          <End Role="Item_Category" Type="Self.Item_Category" Multiplicity="1" />
+          <End Role="Purchase_Transaction" Type="Self.Purchase_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item_Category">
+              <PropertyRef Name="ItemCategoryId" />
+            </Principal>
+            <Dependent Role="Purchase_Transaction">
+              <PropertyRef Name="ItemCategoryId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Transaction_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Purchase_Transaction" Type="Self.Purchase_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Purchase_Transaction">
+              <PropertyRef Name="ProductId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Transaction_Purchase_Header">
+          <End Role="Purchase_Header" Type="Self.Purchase_Header" Multiplicity="1" />
+          <End Role="Purchase_Transaction" Type="Self.Purchase_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Purchase_Header">
+              <PropertyRef Name="OrderNo" />
+            </Principal>
+            <Dependent Role="Purchase_Transaction">
+              <PropertyRef Name="OrderNo_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Transaction_Purchase_Transaction">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Purchase_Transaction" Type="Self.Purchase_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Purchase_Transaction">
+              <PropertyRef Name="AccountId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Transaction_Verified_Transaction">
+          <End Role="Verified_Transaction" Type="Self.Verified_Transaction" Multiplicity="1" />
+          <End Role="Purchase_Transaction" Type="Self.Purchase_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Verified_Transaction">
+              <PropertyRef Name="Verified_TransactionId" />
+            </Principal>
+            <Dependent Role="Purchase_Transaction">
+              <PropertyRef Name="VerifiedTransactionId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Suffix_Division">
+          <End Role="Division" Type="Self.Division" Multiplicity="1" />
+          <End Role="Suffix" Type="Self.Suffix" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Division">
+              <PropertyRef Name="DivisionId" />
+            </Principal>
+            <Dependent Role="Suffix">
+              <PropertyRef Name="DivisionId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Division">
+          <End Role="Division" Type="Self.Division" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Division">
+              <PropertyRef Name="DivisionId" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="DivisionId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Exchange_Rate">
+          <End Role="Exchange_Rate" Type="Self.Exchange_Rate" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exchange_Rate">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="Currency_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_SLA_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Supplier_SLA" Type="Self.Supplier_SLA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Supplier_SLA">
+              <PropertyRef Name="AccountId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Supplier">
+          <End Role="VAT_Code" Type="Self.VAT_Code" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VAT_Code">
+              <PropertyRef Name="VAT_Code" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="VAT_Code_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_VAT_Group">
+          <End Role="VAT_Group" Type="Self.VAT_Group" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VAT_Group">
+              <PropertyRef Name="VAT_Group" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="VAT_Group_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Authorise_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User_Authorise" Type="Self.User_Authorise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="User_Authorise">
+              <PropertyRef Name="UserId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Cost_Center">
+          <End Role="Cost_Center" Type="Self.Cost_Center" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cost_Center">
+              <PropertyRef Name="CostCenterId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CostCenter_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="DepartmentId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Location" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Location_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Teams">
+          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="TeamId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="TeamId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Verified_Transaction_Cost_Center">
+          <End Role="Cost_Center" Type="Self.Cost_Center" Multiplicity="1" />
+          <End Role="Verified_Transaction" Type="Self.Verified_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cost_Center">
+              <PropertyRef Name="CostCenterId" />
+            </Principal>
+            <Dependent Role="Verified_Transaction">
+              <PropertyRef Name="CostCenter_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Verified_Transaction_Purchase_Header">
+          <End Role="Purchase_Header" Type="Self.Purchase_Header" Multiplicity="1" />
+          <End Role="Verified_Transaction" Type="Self.Verified_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Purchase_Header">
+              <PropertyRef Name="OrderNo" />
+            </Principal>
+            <Dependent Role="Verified_Transaction">
+              <PropertyRef Name="OrderNo_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Verified_Transaction_Verified_Transaction">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Verified_Transaction" Type="Self.Verified_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Verified_Transaction">
+              <PropertyRef Name="AccountId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PCS_ModelStoreContainer">
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cost_Center" EntityType="Self.Cost_Center" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Division" EntityType="Self.Division" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exchange_Rate" EntityType="Self.Exchange_Rate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Expense" EntityType="Self.Expense" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Expense_Category" EntityType="Self.Expense_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item_Category" EntityType="Self.Item_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MRC" EntityType="Self.MRC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Purchase_Header" EntityType="Self.Purchase_Header" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Purchase_Transaction" EntityType="Self.Purchase_Transaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Suffix" EntityType="Self.Suffix" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier_Addition" EntityType="Self.Supplier_Addition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier_Quotes" EntityType="Self.Supplier_Quotes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier_SLA" EntityType="Self.Supplier_SLA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Terms_Condition" EntityType="Self.Terms_Condition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Authorise" EntityType="Self.User_Authorise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Setup" EntityType="Self.User_Setup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VAT_Code" EntityType="Self.VAT_Code" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VAT_Group" EntityType="Self.VAT_Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Verified_Transaction" EntityType="Self.Verified_Transaction" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Accounts_Cost_Center" Association="Self.FK_Accounts_Cost_Center">
+            <End Role="Cost_Center" EntitySet="Cost_Center" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accounts_Expense" Association="Self.FK_Accounts_Expense">
+            <End Role="Expense" EntitySet="Expense" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cost_Center_Department" Association="Self.FK_Cost_Center_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Cost_Center" EntitySet="Cost_Center" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cost_Center_Division" Association="Self.FK_Cost_Center_Division">
+            <End Role="Division" EntitySet="Division" />
+            <End Role="Cost_Center" EntitySet="Cost_Center" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_Division" Association="Self.FK_Department_Division">
+            <End Role="Division" EntitySet="Division" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expense_Category_Expense" Association="Self.FK_Expense_Category_Expense">
+            <End Role="Expense" EntitySet="Expense" />
+            <End Role="Expense_Category" EntitySet="Expense_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expense_Category_Item_Category" Association="Self.FK_Expense_Category_Item_Category">
+            <End Role="Item_Category" EntitySet="Item_Category" />
+            <End Role="Expense_Category" EntitySet="Expense_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Location_Cost_Center" Association="Self.FK_Location_Cost_Center">
+            <End Role="Cost_Center" EntitySet="Cost_Center" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MRC_Products" Association="Self.FK_MRC_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="MRC" EntitySet="MRC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MRC_Supplier" Association="Self.FK_MRC_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="MRC" EntitySet="MRC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Item_Category" Association="Self.FK_Products_Item_Category">
+            <End Role="Item_Category" EntitySet="Item_Category" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Header_Cost_Center" Association="Self.FK_Purchase_Header_Cost_Center">
+            <End Role="Cost_Center" EntitySet="Cost_Center" />
+            <End Role="Purchase_Header" EntitySet="Purchase_Header" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Header_Supplier" Association="Self.FK_Purchase_Header_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Purchase_Header" EntitySet="Purchase_Header" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Transaction_Cost_Center" Association="Self.FK_Purchase_Transaction_Cost_Center">
+            <End Role="Cost_Center" EntitySet="Cost_Center" />
+            <End Role="Purchase_Transaction" EntitySet="Purchase_Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Transaction_Item_Category" Association="Self.FK_Purchase_Transaction_Item_Category">
+            <End Role="Item_Category" EntitySet="Item_Category" />
+            <End Role="Purchase_Transaction" EntitySet="Purchase_Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Transaction_Products" Association="Self.FK_Purchase_Transaction_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Purchase_Transaction" EntitySet="Purchase_Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Transaction_Purchase_Header" Association="Self.FK_Purchase_Transaction_Purchase_Header">
+            <End Role="Purchase_Header" EntitySet="Purchase_Header" />
+            <End Role="Purchase_Transaction" EntitySet="Purchase_Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Transaction_Purchase_Transaction" Association="Self.FK_Purchase_Transaction_Purchase_Transaction">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Purchase_Transaction" EntitySet="Purchase_Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Transaction_Verified_Transaction" Association="Self.FK_Purchase_Transaction_Verified_Transaction">
+            <End Role="Verified_Transaction" EntitySet="Verified_Transaction" />
+            <End Role="Purchase_Transaction" EntitySet="Purchase_Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Suffix_Division" Association="Self.FK_Suffix_Division">
+            <End Role="Division" EntitySet="Division" />
+            <End Role="Suffix" EntitySet="Suffix" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Division" Association="Self.FK_Supplier_Division">
+            <End Role="Division" EntitySet="Division" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Exchange_Rate" Association="Self.FK_Supplier_Exchange_Rate">
+            <End Role="Exchange_Rate" EntitySet="Exchange_Rate" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_SLA_Supplier" Association="Self.FK_Supplier_SLA_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Supplier_SLA" EntitySet="Supplier_SLA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Supplier" Association="Self.FK_Supplier_Supplier">
+            <End Role="VAT_Code" EntitySet="VAT_Code" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_VAT_Group" Association="Self.FK_Supplier_VAT_Group">
+            <End Role="VAT_Group" EntitySet="VAT_Group" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Authorise_User" Association="Self.FK_User_Authorise_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="User_Authorise" EntitySet="User_Authorise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Cost_Center" Association="Self.FK_User_Cost_Center">
+            <End Role="Cost_Center" EntitySet="Cost_Center" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Department" Association="Self.FK_User_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Location" Association="Self.FK_User_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Teams" Association="Self.FK_User_Teams">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Verified_Transaction_Cost_Center" Association="Self.FK_Verified_Transaction_Cost_Center">
+            <End Role="Cost_Center" EntitySet="Cost_Center" />
+            <End Role="Verified_Transaction" EntitySet="Verified_Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Verified_Transaction_Purchase_Header" Association="Self.FK_Verified_Transaction_Purchase_Header">
+            <End Role="Purchase_Header" EntitySet="Purchase_Header" />
+            <End Role="Verified_Transaction" EntitySet="Verified_Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Verified_Transaction_Verified_Transaction" Association="Self.FK_Verified_Transaction_Verified_Transaction">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Verified_Transaction" EntitySet="Verified_Transaction" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PCS_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Account_Code" />
+          </Key>
+          <Property Name="Account_Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CostCenterId_FK" Type="Int32" Nullable="false" />
+          <Property Name="ExpenseId_FK" Type="Int32" Nullable="false" />
+          <Property Name="Account_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Create_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Closed_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Closed_by" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cost_Center" Relationship="Self.FK_Accounts_Cost_Center" FromRole="Accounts" ToRole="Cost_Center" />
+          <NavigationProperty Name="Expense" Relationship="Self.FK_Accounts_Expense" FromRole="Accounts" ToRole="Expense" />
+        </EntityType>
+        <EntityType Name="Cost_Center">
+          <Key>
+            <PropertyRef Name="CostCenterId" />
+          </Key>
+          <Property Name="CostCenterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DivisionId_FK" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentId_FK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_Accounts_Cost_Center" FromRole="Cost_Center" ToRole="Accounts" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_Cost_Center_Department" FromRole="Cost_Center" ToRole="Department" />
+          <NavigationProperty Name="Division" Relationship="Self.FK_Cost_Center_Division" FromRole="Cost_Center" ToRole="Division" />
+          <NavigationProperty Name="Locations" Relationship="Self.FK_Location_Cost_Center" FromRole="Cost_Center" ToRole="Location" />
+          <NavigationProperty Name="Purchase_Header" Relationship="Self.FK_Purchase_Header_Cost_Center" FromRole="Cost_Center" ToRole="Purchase_Header" />
+          <NavigationProperty Name="Purchase_Transaction" Relationship="Self.FK_Purchase_Transaction_Cost_Center" FromRole="Cost_Center" ToRole="Purchase_Transaction" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_Cost_Center" FromRole="Cost_Center" ToRole="User" />
+          <NavigationProperty Name="Verified_Transaction" Relationship="Self.FK_Verified_Transaction_Cost_Center" FromRole="Cost_Center" ToRole="Verified_Transaction" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Department_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DivisionId_FK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cost_Center" Relationship="Self.FK_Cost_Center_Department" FromRole="Department" ToRole="Cost_Center" />
+          <NavigationProperty Name="Division" Relationship="Self.FK_Department_Division" FromRole="Department" ToRole="Division" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_Department" FromRole="Department" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Division">
+          <Key>
+            <PropertyRef Name="DivisionId" />
+          </Key>
+          <Property Name="DivisionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Division_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cost_Center" Relationship="Self.FK_Cost_Center_Division" FromRole="Division" ToRole="Cost_Center" />
+          <NavigationProperty Name="Departments" Relationship="Self.FK_Department_Division" FromRole="Division" ToRole="Department" />
+          <NavigationProperty Name="Suffixes" Relationship="Self.FK_Suffix_Division" FromRole="Division" ToRole="Suffix" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK_Supplier_Division" FromRole="Division" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="Exchange_Rate">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Abbreviation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BankCTRL" Type="Int32" Nullable="false" />
+          <Property Name="DiffCTRL" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK_Supplier_Exchange_Rate" FromRole="Exchange_Rate" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="Expense">
+          <Key>
+            <PropertyRef Name="ExpenseId" />
+          </Key>
+          <Property Name="ExpenseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Short" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccountName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Actype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Exgroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BANK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Suffmask" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DivId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_Accounts_Expense" FromRole="Expense" ToRole="Accounts" />
+          <NavigationProperty Name="Expense_Category" Relationship="Self.FK_Expense_Category_Expense" FromRole="Expense" ToRole="Expense_Category" />
+        </EntityType>
+        <EntityType Name="Expense_Category">
+          <Key>
+            <PropertyRef Name="Expense_Category_Id" />
+          </Key>
+          <Property Name="Expense_Category_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ItemCategoryId_FK" Type="Int32" Nullable="false" />
+          <Property Name="ExpenseId_FK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Expense" Relationship="Self.FK_Expense_Category_Expense" FromRole="Expense_Category" ToRole="Expense" />
+          <NavigationProperty Name="Item_Category" Relationship="Self.FK_Expense_Category_Item_Category" FromRole="Expense_Category" ToRole="Item_Category" />
+        </EntityType>
+        <EntityType Name="Item_Category">
+          <Key>
+            <PropertyRef Name="ItemCategoryId" />
+          </Key>
+          <Property Name="ItemCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Expense_Category" Relationship="Self.FK_Expense_Category_Item_Category" FromRole="Item_Category" ToRole="Expense_Category" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Item_Category" FromRole="Item_Category" ToRole="Products" />
+          <NavigationProperty Name="Purchase_Transaction" Relationship="Self.FK_Purchase_Transaction_Item_Category" FromRole="Item_Category" ToRole="Purchase_Transaction" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Location1" />
+          </Key>
+          <Property Name="Location1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CostCenterId_FK" Type="Int32" Nullable="false" />
+          <Property Name="Deptanal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cost_Center" Relationship="Self.FK_Location_Cost_Center" FromRole="Location" ToRole="Cost_Center" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_Location" FromRole="Location" ToRole="User" />
+        </EntityType>
+        <EntityType Name="MRC">
+          <Key>
+            <PropertyRef Name="MRC_Id" />
+          </Key>
+          <Property Name="MRC_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId_FK" Type="Int32" Nullable="false" />
+          <Property Name="AccountId_FK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Unit" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Pack_Size" Type="Int32" Nullable="false" />
+          <Property Name="UnitRate" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OtherCharges" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_MRC_Products" FromRole="MRC" ToRole="Products" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_MRC_Supplier" FromRole="MRC" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TermsCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ItemCategoryId_FK" Type="Int32" Nullable="false" />
+          <Property Name="ProductType" Type="Int32" Nullable="false" />
+          <Property Name="PackSize" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Item_Category" Relationship="Self.FK_Products_Item_Category" FromRole="Products" ToRole="Item_Category" />
+          <NavigationProperty Name="MRCs" Relationship="Self.FK_MRC_Products" FromRole="Products" ToRole="MRC" />
+          <NavigationProperty Name="Purchase_Transaction" Relationship="Self.FK_Purchase_Transaction_Products" FromRole="Products" ToRole="Purchase_Transaction" />
+        </EntityType>
+        <EntityType Name="Purchase_Header">
+          <Key>
+            <PropertyRef Name="OrderNo" />
+          </Key>
+          <Property Name="OrderNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CostCenterId_FK" Type="Int32" Nullable="false" />
+          <Property Name="AccountId_FK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Created_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AmendedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AmendedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Notes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FinanceApproved" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OperationApproved" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InitalsBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cost_Center" Relationship="Self.FK_Purchase_Header_Cost_Center" FromRole="Purchase_Header" ToRole="Cost_Center" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_Purchase_Header_Supplier" FromRole="Purchase_Header" ToRole="Supplier" />
+          <NavigationProperty Name="Purchase_Transaction" Relationship="Self.FK_Purchase_Transaction_Purchase_Header" FromRole="Purchase_Header" ToRole="Purchase_Transaction" />
+          <NavigationProperty Name="Verified_Transaction" Relationship="Self.FK_Verified_Transaction_Purchase_Header" FromRole="Purchase_Header" ToRole="Verified_Transaction" />
+        </EntityType>
+        <EntityType Name="Purchase_Transaction">
+          <Key>
+            <PropertyRef Name="Purchase_TransactionId" />
+          </Key>
+          <Property Name="Purchase_TransactionId" Type="Int32" Nullable="false" />
+          <Property Name="OrderNo_FK" Type="Int32" Nullable="false" />
+          <Property Name="CostCenterId_FK" Type="Int32" Nullable="false" />
+          <Property Name="ProductId_FK" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="GrossValue" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ReceiveDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ReceiveBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VarifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VarifiedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ItemCategoryId_FK" Type="Int32" Nullable="false" />
+          <Property Name="TermsCode" Type="Int32" Nullable="false" />
+          <Property Name="VerifiedTransactionId_FK" Type="Int32" Nullable="false" />
+          <Property Name="AccountId_FK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TermsPrinted" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Suffix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cost_Center" Relationship="Self.FK_Purchase_Transaction_Cost_Center" FromRole="Purchase_Transaction" ToRole="Cost_Center" />
+          <NavigationProperty Name="Item_Category" Relationship="Self.FK_Purchase_Transaction_Item_Category" FromRole="Purchase_Transaction" ToRole="Item_Category" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Purchase_Transaction_Products" FromRole="Purchase_Transaction" ToRole="Products" />
+          <NavigationProperty Name="Purchase_Header" Relationship="Self.FK_Purchase_Transaction_Purchase_Header" FromRole="Purchase_Transaction" ToRole="Purchase_Header" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_Purchase_Transaction_Purchase_Transaction" FromRole="Purchase_Transaction" ToRole="Supplier" />
+          <NavigationProperty Name="Verified_Transaction" Relationship="Self.FK_Purchase_Transaction_Verified_Transaction" FromRole="Purchase_Transaction" ToRole="Verified_Transaction" />
+        </EntityType>
+        <EntityType Name="Suffix">
+          <Key>
+            <PropertyRef Name="Suffix_Id" />
+          </Key>
+          <Property Name="Suffix_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Suffix1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Expense" Type="Int32" Nullable="false" />
+          <Property Name="DivisionId_FK" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Division" Relationship="Self.FK_Suffix_Division" FromRole="Suffix" ToRole="Division" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Short" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Currency_FK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DivisionId_FK" Type="Int32" Nullable="false" />
+          <Property Name="CreditTerms" Type="Int32" Nullable="false" />
+          <Property Name="VAT_Group_FK" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VAT_Code_FK" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Acccount_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NLCONTROL" Type="Int32" Nullable="false" />
+          <Property Name="Supplier_Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Division" Relationship="Self.FK_Supplier_Division" FromRole="Supplier" ToRole="Division" />
+          <NavigationProperty Name="Exchange_Rate" Relationship="Self.FK_Supplier_Exchange_Rate" FromRole="Supplier" ToRole="Exchange_Rate" />
+          <NavigationProperty Name="MRCs" Relationship="Self.FK_MRC_Supplier" FromRole="Supplier" ToRole="MRC" />
+          <NavigationProperty Name="Purchase_Header" Relationship="Self.FK_Purchase_Header_Supplier" FromRole="Supplier" ToRole="Purchase_Header" />
+          <NavigationProperty Name="Purchase_Transaction" Relationship="Self.FK_Purchase_Transaction_Purchase_Transaction" FromRole="Supplier" ToRole="Purchase_Transaction" />
+          <NavigationProperty Name="Supplier_SLA" Relationship="Self.FK_Supplier_SLA_Supplier" FromRole="Supplier" ToRole="Supplier_SLA" />
+          <NavigationProperty Name="VAT_Code" Relationship="Self.FK_Supplier_Supplier" FromRole="Supplier" ToRole="VAT_Code" />
+          <NavigationProperty Name="VAT_Group" Relationship="Self.FK_Supplier_VAT_Group" FromRole="Supplier" ToRole="VAT_Group" />
+          <NavigationProperty Name="Verified_Transaction" Relationship="Self.FK_Verified_Transaction_Verified_Transaction" FromRole="Supplier" ToRole="Verified_Transaction" />
+        </EntityType>
+        <EntityType Name="Supplier_Addition">
+          <Key>
+            <PropertyRef Name="Account" />
+          </Key>
+          <Property Name="Account" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmailPO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplier_Quotes">
+          <Key>
+            <PropertyRef Name="OrderNo" />
+          </Key>
+          <Property Name="OrderNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Account1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="File1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Account2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="File2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Acccount3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="File3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Account4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="File4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Account5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="File5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplier_SLA">
+          <Key>
+            <PropertyRef Name="Supplier_SLAId" />
+          </Key>
+          <Property Name="Supplier_SLAId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId_FK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SLA_Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_Supplier_SLA_Supplier" FromRole="Supplier_SLA" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="TeamId" />
+          </Key>
+          <Property Name="TeamId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeamName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_Teams" FromRole="Teams" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Terms_Condition">
+          <Key>
+            <PropertyRef Name="TermsCode" />
+          </Key>
+          <Property Name="TermsCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmployeeNo" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DepartmentId_FK" Type="Int32" Nullable="false" />
+          <Property Name="CostCenter_FK" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="Int32" Nullable="false" />
+          <Property Name="Role" Type="Int32" Nullable="false" />
+          <Property Name="PrintFormat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DivisionAccess" Type="Int32" Nullable="false" />
+          <Property Name="Grade" Type="Int32" Nullable="false" />
+          <Property Name="OperationsApprover" Type="Boolean" Nullable="false" />
+          <Property Name="FinanceApprover" Type="Boolean" Nullable="false" />
+          <Property Name="VendModAccess" Type="Boolean" Nullable="false" />
+          <Property Name="Signature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TeamApplicable" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TeamId_FK" Type="Int32" Nullable="false" />
+          <Property Name="Out_Of_Office" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Comments" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Location_FK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Terminal" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cost_Center" Relationship="Self.FK_User_Cost_Center" FromRole="User" ToRole="Cost_Center" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_User_Department" FromRole="User" ToRole="Department" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_User_Location" FromRole="User" ToRole="Location" />
+          <NavigationProperty Name="Team" Relationship="Self.FK_User_Teams" FromRole="User" ToRole="Teams" />
+          <NavigationProperty Name="User_Authorise" Relationship="Self.FK_User_Authorise_User" FromRole="User" ToRole="User_Authorise" />
+        </EntityType>
+        <EntityType Name="User_Authorise">
+          <Key>
+            <PropertyRef Name="UserAuthorisationId" />
+          </Key>
+          <Property Name="UserAuthorisationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId_FK" Type="Int32" Nullable="false" />
+          <Property Name="User_Authorisor1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Auth1_Llimit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Auth1_Ulimit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="User_Authorisor2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Auth2_Llimit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Auth2_Ulimit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="User_Authorisor3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Auth3_Llimit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Auth3_Ulimit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="User_Authorisor4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Auth4_Llimit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Auth4_Ulimit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="User_Authorisor5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Auth5_Llimit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Auth5_Ulimit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="User_Authorisor6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Auth6_Llimit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Auth6_Ulimit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="User_Authorisor7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Auth7_Llimit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Auth7_Ulimit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="User_Authorisor8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Auth8_Llimit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Auth8_Ulimit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="User_Authorisor9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Auth9_Llimit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Auth9_Ulimit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="User_Authorisor10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Auth10_Llimit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Auth10_Ulimit" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Authorise_User" FromRole="User_Authorise" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User_Setup">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ReceiveNotification" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VAT_Code">
+          <Key>
+            <PropertyRef Name="VAT_Code1" />
+          </Key>
+          <Property Name="VAT_Code1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VATCodeDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK_Supplier_Supplier" FromRole="VAT_Code" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="VAT_Group">
+          <Key>
+            <PropertyRef Name="VAT_Group1" />
+          </Key>
+          <Property Name="VAT_Group1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VATGroupDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SLADJUST" Type="Int32" Nullable="false" />
+          <Property Name="PLADJUST" Type="Int32" Nullable="false" />
+          <Property Name="SDBASIS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EUGROUP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK_Supplier_VAT_Group" FromRole="VAT_Group" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="Verified_Transaction">
+          <Key>
+            <PropertyRef Name="Verified_TransactionId" />
+          </Key>
+          <Property Name="Verified_TransactionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderNo_FK" Type="Int32" Nullable="false" />
+          <Property Name="CostCenter_FK" Type="Int32" Nullable="false" />
+          <Property Name="Supplier_Ref" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiscRef" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Document_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DueDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AccountCode" Type="Int32" Nullable="false" />
+          <Property Name="Suffix" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VATCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Narrative" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccountId_FK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PurchaseTransactionRef" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PostingDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="VarifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VarifiedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ExportFlag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cost_Center" Relationship="Self.FK_Verified_Transaction_Cost_Center" FromRole="Verified_Transaction" ToRole="Cost_Center" />
+          <NavigationProperty Name="Purchase_Header" Relationship="Self.FK_Verified_Transaction_Purchase_Header" FromRole="Verified_Transaction" ToRole="Purchase_Header" />
+          <NavigationProperty Name="Purchase_Transaction" Relationship="Self.FK_Purchase_Transaction_Verified_Transaction" FromRole="Verified_Transaction" ToRole="Purchase_Transaction" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_Verified_Transaction_Verified_Transaction" FromRole="Verified_Transaction" ToRole="Supplier" />
+        </EntityType>
+        <Association Name="FK_Accounts_Cost_Center">
+          <End Role="Cost_Center" Type="Self.Cost_Center" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cost_Center">
+              <PropertyRef Name="CostCenterId" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="CostCenterId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accounts_Expense">
+          <End Role="Expense" Type="Self.Expense" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expense">
+              <PropertyRef Name="ExpenseId" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="ExpenseId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cost_Center_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Cost_Center" Type="Self.Cost_Center" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="Cost_Center">
+              <PropertyRef Name="DepartmentId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cost_Center_Division">
+          <End Role="Division" Type="Self.Division" Multiplicity="1" />
+          <End Role="Cost_Center" Type="Self.Cost_Center" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Division">
+              <PropertyRef Name="DivisionId" />
+            </Principal>
+            <Dependent Role="Cost_Center">
+              <PropertyRef Name="DivisionId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Location_Cost_Center">
+          <End Role="Cost_Center" Type="Self.Cost_Center" Multiplicity="1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cost_Center">
+              <PropertyRef Name="CostCenterId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="CostCenterId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Header_Cost_Center">
+          <End Role="Cost_Center" Type="Self.Cost_Center" Multiplicity="1" />
+          <End Role="Purchase_Header" Type="Self.Purchase_Header" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cost_Center">
+              <PropertyRef Name="CostCenterId" />
+            </Principal>
+            <Dependent Role="Purchase_Header">
+              <PropertyRef Name="CostCenterId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Transaction_Cost_Center">
+          <End Role="Cost_Center" Type="Self.Cost_Center" Multiplicity="1" />
+          <End Role="Purchase_Transaction" Type="Self.Purchase_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cost_Center">
+              <PropertyRef Name="CostCenterId" />
+            </Principal>
+            <Dependent Role="Purchase_Transaction">
+              <PropertyRef Name="CostCenterId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Cost_Center">
+          <End Role="Cost_Center" Type="Self.Cost_Center" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cost_Center">
+              <PropertyRef Name="CostCenterId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CostCenter_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Verified_Transaction_Cost_Center">
+          <End Role="Cost_Center" Type="Self.Cost_Center" Multiplicity="1" />
+          <End Role="Verified_Transaction" Type="Self.Verified_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cost_Center">
+              <PropertyRef Name="CostCenterId" />
+            </Principal>
+            <Dependent Role="Verified_Transaction">
+              <PropertyRef Name="CostCenter_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_Division">
+          <End Role="Division" Type="Self.Division" Multiplicity="1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Division">
+              <PropertyRef Name="DivisionId" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="DivisionId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="DepartmentId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Suffix_Division">
+          <End Role="Division" Type="Self.Division" Multiplicity="1" />
+          <End Role="Suffix" Type="Self.Suffix" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Division">
+              <PropertyRef Name="DivisionId" />
+            </Principal>
+            <Dependent Role="Suffix">
+              <PropertyRef Name="DivisionId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Division">
+          <End Role="Division" Type="Self.Division" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Division">
+              <PropertyRef Name="DivisionId" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="DivisionId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Exchange_Rate">
+          <End Role="Exchange_Rate" Type="Self.Exchange_Rate" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exchange_Rate">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="Currency_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Expense_Category_Expense">
+          <End Role="Expense" Type="Self.Expense" Multiplicity="1" />
+          <End Role="Expense_Category" Type="Self.Expense_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expense">
+              <PropertyRef Name="ExpenseId" />
+            </Principal>
+            <Dependent Role="Expense_Category">
+              <PropertyRef Name="ExpenseId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Expense_Category_Item_Category">
+          <End Role="Item_Category" Type="Self.Item_Category" Multiplicity="1" />
+          <End Role="Expense_Category" Type="Self.Expense_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item_Category">
+              <PropertyRef Name="ItemCategoryId" />
+            </Principal>
+            <Dependent Role="Expense_Category">
+              <PropertyRef Name="ItemCategoryId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Item_Category">
+          <End Role="Item_Category" Type="Self.Item_Category" Multiplicity="1" />
+          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item_Category">
+              <PropertyRef Name="ItemCategoryId" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="ItemCategoryId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Transaction_Item_Category">
+          <End Role="Item_Category" Type="Self.Item_Category" Multiplicity="1" />
+          <End Role="Purchase_Transaction" Type="Self.Purchase_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item_Category">
+              <PropertyRef Name="ItemCategoryId" />
+            </Principal>
+            <Dependent Role="Purchase_Transaction">
+              <PropertyRef Name="ItemCategoryId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Location1" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Location_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MRC_Products">
+          <End Role="Products" Type="Self.Product" Multiplicity="1" />
+          <End Role="MRC" Type="Self.MRC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="MRC">
+              <PropertyRef Name="ProductId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MRC_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="MRC" Type="Self.MRC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="MRC">
+              <PropertyRef Name="AccountId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Transaction_Products">
+          <End Role="Products" Type="Self.Product" Multiplicity="1" />
+          <End Role="Purchase_Transaction" Type="Self.Purchase_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Purchase_Transaction">
+              <PropertyRef Name="ProductId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Header_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Purchase_Header" Type="Self.Purchase_Header" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Purchase_Header">
+              <PropertyRef Name="AccountId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Transaction_Purchase_Header">
+          <End Role="Purchase_Header" Type="Self.Purchase_Header" Multiplicity="1" />
+          <End Role="Purchase_Transaction" Type="Self.Purchase_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Purchase_Header">
+              <PropertyRef Name="OrderNo" />
+            </Principal>
+            <Dependent Role="Purchase_Transaction">
+              <PropertyRef Name="OrderNo_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Verified_Transaction_Purchase_Header">
+          <End Role="Purchase_Header" Type="Self.Purchase_Header" Multiplicity="1" />
+          <End Role="Verified_Transaction" Type="Self.Verified_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Purchase_Header">
+              <PropertyRef Name="OrderNo" />
+            </Principal>
+            <Dependent Role="Verified_Transaction">
+              <PropertyRef Name="OrderNo_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Transaction_Purchase_Transaction">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Purchase_Transaction" Type="Self.Purchase_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Purchase_Transaction">
+              <PropertyRef Name="AccountId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Transaction_Verified_Transaction">
+          <End Role="Verified_Transaction" Type="Self.Verified_Transaction" Multiplicity="1" />
+          <End Role="Purchase_Transaction" Type="Self.Purchase_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Verified_Transaction">
+              <PropertyRef Name="Verified_TransactionId" />
+            </Principal>
+            <Dependent Role="Purchase_Transaction">
+              <PropertyRef Name="VerifiedTransactionId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_SLA_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Supplier_SLA" Type="Self.Supplier_SLA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Supplier_SLA">
+              <PropertyRef Name="AccountId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Supplier">
+          <End Role="VAT_Code" Type="Self.VAT_Code" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VAT_Code">
+              <PropertyRef Name="VAT_Code1" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="VAT_Code_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_VAT_Group">
+          <End Role="VAT_Group" Type="Self.VAT_Group" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VAT_Group">
+              <PropertyRef Name="VAT_Group1" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="VAT_Group_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Verified_Transaction_Verified_Transaction">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Verified_Transaction" Type="Self.Verified_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Verified_Transaction">
+              <PropertyRef Name="AccountId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Teams">
+          <End Role="Teams" Type="Self.Team" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="TeamId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="TeamId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Authorise_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User_Authorise" Type="Self.User_Authorise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="User_Authorise">
+              <PropertyRef Name="UserId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Purchase_Control_SystemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="Cost_Center" EntityType="Self.Cost_Center" />
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="Divisions" EntityType="Self.Division" />
+          <EntitySet Name="Exchange_Rate" EntityType="Self.Exchange_Rate" />
+          <EntitySet Name="Expenses" EntityType="Self.Expense" />
+          <EntitySet Name="Expense_Category" EntityType="Self.Expense_Category" />
+          <EntitySet Name="Item_Category" EntityType="Self.Item_Category" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="MRCs" EntityType="Self.MRC" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Purchase_Header" EntityType="Self.Purchase_Header" />
+          <EntitySet Name="Purchase_Transaction" EntityType="Self.Purchase_Transaction" />
+          <EntitySet Name="Suffixes" EntityType="Self.Suffix" />
+          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+          <EntitySet Name="Supplier_Addition" EntityType="Self.Supplier_Addition" />
+          <EntitySet Name="Supplier_Quotes" EntityType="Self.Supplier_Quotes" />
+          <EntitySet Name="Supplier_SLA" EntityType="Self.Supplier_SLA" />
+          <EntitySet Name="Teams" EntityType="Self.Team" />
+          <EntitySet Name="Terms_Condition" EntityType="Self.Terms_Condition" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="User_Authorise" EntityType="Self.User_Authorise" />
+          <EntitySet Name="User_Setup" EntityType="Self.User_Setup" />
+          <EntitySet Name="VAT_Code" EntityType="Self.VAT_Code" />
+          <EntitySet Name="VAT_Group" EntityType="Self.VAT_Group" />
+          <EntitySet Name="Verified_Transaction" EntityType="Self.Verified_Transaction" />
+          <AssociationSet Name="FK_Accounts_Cost_Center" Association="Self.FK_Accounts_Cost_Center">
+            <End Role="Cost_Center" EntitySet="Cost_Center" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accounts_Expense" Association="Self.FK_Accounts_Expense">
+            <End Role="Expense" EntitySet="Expenses" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cost_Center_Department" Association="Self.FK_Cost_Center_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Cost_Center" EntitySet="Cost_Center" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cost_Center_Division" Association="Self.FK_Cost_Center_Division">
+            <End Role="Division" EntitySet="Divisions" />
+            <End Role="Cost_Center" EntitySet="Cost_Center" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Location_Cost_Center" Association="Self.FK_Location_Cost_Center">
+            <End Role="Cost_Center" EntitySet="Cost_Center" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Header_Cost_Center" Association="Self.FK_Purchase_Header_Cost_Center">
+            <End Role="Cost_Center" EntitySet="Cost_Center" />
+            <End Role="Purchase_Header" EntitySet="Purchase_Header" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Transaction_Cost_Center" Association="Self.FK_Purchase_Transaction_Cost_Center">
+            <End Role="Cost_Center" EntitySet="Cost_Center" />
+            <End Role="Purchase_Transaction" EntitySet="Purchase_Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Cost_Center" Association="Self.FK_User_Cost_Center">
+            <End Role="Cost_Center" EntitySet="Cost_Center" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Verified_Transaction_Cost_Center" Association="Self.FK_Verified_Transaction_Cost_Center">
+            <End Role="Cost_Center" EntitySet="Cost_Center" />
+            <End Role="Verified_Transaction" EntitySet="Verified_Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_Division" Association="Self.FK_Department_Division">
+            <End Role="Division" EntitySet="Divisions" />
+            <End Role="Department" EntitySet="Departments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Department" Association="Self.FK_User_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Suffix_Division" Association="Self.FK_Suffix_Division">
+            <End Role="Division" EntitySet="Divisions" />
+            <End Role="Suffix" EntitySet="Suffixes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Division" Association="Self.FK_Supplier_Division">
+            <End Role="Division" EntitySet="Divisions" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Exchange_Rate" Association="Self.FK_Supplier_Exchange_Rate">
+            <End Role="Exchange_Rate" EntitySet="Exchange_Rate" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expense_Category_Expense" Association="Self.FK_Expense_Category_Expense">
+            <End Role="Expense" EntitySet="Expenses" />
+            <End Role="Expense_Category" EntitySet="Expense_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expense_Category_Item_Category" Association="Self.FK_Expense_Category_Item_Category">
+            <End Role="Item_Category" EntitySet="Item_Category" />
+            <End Role="Expense_Category" EntitySet="Expense_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Item_Category" Association="Self.FK_Products_Item_Category">
+            <End Role="Item_Category" EntitySet="Item_Category" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Transaction_Item_Category" Association="Self.FK_Purchase_Transaction_Item_Category">
+            <End Role="Item_Category" EntitySet="Item_Category" />
+            <End Role="Purchase_Transaction" EntitySet="Purchase_Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Location" Association="Self.FK_User_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MRC_Products" Association="Self.FK_MRC_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="MRC" EntitySet="MRCs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MRC_Supplier" Association="Self.FK_MRC_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="MRC" EntitySet="MRCs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Transaction_Products" Association="Self.FK_Purchase_Transaction_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Purchase_Transaction" EntitySet="Purchase_Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Header_Supplier" Association="Self.FK_Purchase_Header_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Purchase_Header" EntitySet="Purchase_Header" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Transaction_Purchase_Header" Association="Self.FK_Purchase_Transaction_Purchase_Header">
+            <End Role="Purchase_Header" EntitySet="Purchase_Header" />
+            <End Role="Purchase_Transaction" EntitySet="Purchase_Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Verified_Transaction_Purchase_Header" Association="Self.FK_Verified_Transaction_Purchase_Header">
+            <End Role="Purchase_Header" EntitySet="Purchase_Header" />
+            <End Role="Verified_Transaction" EntitySet="Verified_Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Transaction_Purchase_Transaction" Association="Self.FK_Purchase_Transaction_Purchase_Transaction">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Purchase_Transaction" EntitySet="Purchase_Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Transaction_Verified_Transaction" Association="Self.FK_Purchase_Transaction_Verified_Transaction">
+            <End Role="Verified_Transaction" EntitySet="Verified_Transaction" />
+            <End Role="Purchase_Transaction" EntitySet="Purchase_Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_SLA_Supplier" Association="Self.FK_Supplier_SLA_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Supplier_SLA" EntitySet="Supplier_SLA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Supplier" Association="Self.FK_Supplier_Supplier">
+            <End Role="VAT_Code" EntitySet="VAT_Code" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_VAT_Group" Association="Self.FK_Supplier_VAT_Group">
+            <End Role="VAT_Group" EntitySet="VAT_Group" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Verified_Transaction_Verified_Transaction" Association="Self.FK_Verified_Transaction_Verified_Transaction">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Verified_Transaction" EntitySet="Verified_Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Teams" Association="Self.FK_User_Teams">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Authorise_User" Association="Self.FK_User_Authorise_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="User_Authorise" EntitySet="User_Authorise" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PCS_ModelStoreContainer" CdmEntityContainer="Purchase_Control_SystemEntities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="PCS_Model.Account">
+              <MappingFragment StoreEntitySet="Accounts">
+                <ScalarProperty Name="Account_Code" ColumnName="Account_Code" />
+                <ScalarProperty Name="CostCenterId_FK" ColumnName="CostCenterId_FK" />
+                <ScalarProperty Name="ExpenseId_FK" ColumnName="ExpenseId_FK" />
+                <ScalarProperty Name="Account_Name" ColumnName="Account_Name" />
+                <ScalarProperty Name="Create_Date" ColumnName="Create_Date" />
+                <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+                <ScalarProperty Name="Closed_date" ColumnName="Closed_date" />
+                <ScalarProperty Name="Closed_by" ColumnName="Closed_by" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cost_Center">
+            <EntityTypeMapping TypeName="PCS_Model.Cost_Center">
+              <MappingFragment StoreEntitySet="Cost_Center">
+                <ScalarProperty Name="CostCenterId" ColumnName="CostCenterId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DivisionId_FK" ColumnName="DivisionId_FK" />
+                <ScalarProperty Name="DepartmentId_FK" ColumnName="DepartmentId_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="PCS_Model.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="Department_name" ColumnName="Department_name" />
+                <ScalarProperty Name="DivisionId_FK" ColumnName="DivisionId_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Divisions">
+            <EntityTypeMapping TypeName="PCS_Model.Division">
+              <MappingFragment StoreEntitySet="Division">
+                <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+                <ScalarProperty Name="Division_Name" ColumnName="Division_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exchange_Rate">
+            <EntityTypeMapping TypeName="PCS_Model.Exchange_Rate">
+              <MappingFragment StoreEntitySet="Exchange_Rate">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="BankCTRL" ColumnName="BankCTRL" />
+                <ScalarProperty Name="DiffCTRL" ColumnName="DiffCTRL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Expenses">
+            <EntityTypeMapping TypeName="PCS_Model.Expense">
+              <MappingFragment StoreEntitySet="Expense">
+                <ScalarProperty Name="ExpenseId" ColumnName="ExpenseId" />
+                <ScalarProperty Name="Short" ColumnName="Short" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="Actype" ColumnName="Actype" />
+                <ScalarProperty Name="Exgroup" ColumnName="Exgroup" />
+                <ScalarProperty Name="BANK" ColumnName="BANK" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Suffmask" ColumnName="Suffmask" />
+                <ScalarProperty Name="DivId" ColumnName="DivId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Expense_Category">
+            <EntityTypeMapping TypeName="PCS_Model.Expense_Category">
+              <MappingFragment StoreEntitySet="Expense_Category">
+                <ScalarProperty Name="Expense_Category_Id" ColumnName="Expense_Category_Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ItemCategoryId_FK" ColumnName="ItemCategoryId_FK" />
+                <ScalarProperty Name="ExpenseId_FK" ColumnName="ExpenseId_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Category">
+            <EntityTypeMapping TypeName="PCS_Model.Item_Category">
+              <MappingFragment StoreEntitySet="Item_Category">
+                <ScalarProperty Name="ItemCategoryId" ColumnName="ItemCategoryId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="PCS_Model.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="Location1" ColumnName="Location" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CostCenterId_FK" ColumnName="CostCenterId_FK" />
+                <ScalarProperty Name="Deptanal" ColumnName="Deptanal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MRCs">
+            <EntityTypeMapping TypeName="PCS_Model.MRC">
+              <MappingFragment StoreEntitySet="MRC">
+                <ScalarProperty Name="MRC_Id" ColumnName="MRC_Id" />
+                <ScalarProperty Name="ProductId_FK" ColumnName="ProductId_FK" />
+                <ScalarProperty Name="AccountId_FK" ColumnName="AccountId_FK" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Pack_Size" ColumnName="Pack_Size" />
+                <ScalarProperty Name="UnitRate" ColumnName="UnitRate" />
+                <ScalarProperty Name="OtherCharges" ColumnName="OtherCharges" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="PCS_Model.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="PackSize" ColumnName="PackSize" />
+                <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+                <ScalarProperty Name="TermsCode" ColumnName="TermsCode" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ItemCategoryId_FK" ColumnName="ItemCategoryId_FK" />
+                </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Purchase_Header">
+            <EntityTypeMapping TypeName="PCS_Model.Purchase_Header">
+              <MappingFragment StoreEntitySet="Purchase_Header">
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="CostCenterId_FK" ColumnName="CostCenterId_FK" />
+                <ScalarProperty Name="AccountId_FK" ColumnName="AccountId_FK" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+                <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+                <ScalarProperty Name="AmendedBy" ColumnName="AmendedBy" />
+                <ScalarProperty Name="AmendedDate" ColumnName="AmendedDate" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="FinanceApproved" ColumnName="FinanceApproved" />
+                <ScalarProperty Name="OperationApproved" ColumnName="OperationApproved" />
+                <ScalarProperty Name="InitalsBy" ColumnName="InitalsBy" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Purchase_Transaction">
+            <EntityTypeMapping TypeName="PCS_Model.Purchase_Transaction">
+              <MappingFragment StoreEntitySet="Purchase_Transaction">
+                <ScalarProperty Name="Purchase_TransactionId" ColumnName="Purchase_TransactionId" />
+                <ScalarProperty Name="OrderNo_FK" ColumnName="OrderNo_FK" />
+                <ScalarProperty Name="CostCenterId_FK" ColumnName="CostCenterId_FK" />
+                <ScalarProperty Name="ProductId_FK" ColumnName="ProductId_FK" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="GrossValue" ColumnName="GrossValue" />
+                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+                <ScalarProperty Name="ReceiveBy" ColumnName="ReceiveBy" />
+                <ScalarProperty Name="VarifiedBy" ColumnName="VarifiedBy" />
+                <ScalarProperty Name="VarifiedDate" ColumnName="VarifiedDate" />
+                <ScalarProperty Name="ItemCategoryId_FK" ColumnName="ItemCategoryId_FK" />
+                <ScalarProperty Name="TermsCode" ColumnName="TermsCode" />
+                <ScalarProperty Name="VerifiedTransactionId_FK" ColumnName="VerifiedTransactionId_FK" />
+                <ScalarProperty Name="AccountId_FK" ColumnName="AccountId_FK" />
+                <ScalarProperty Name="TermsPrinted" ColumnName="TermsPrinted" />
+                <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suffixes">
+            <EntityTypeMapping TypeName="PCS_Model.Suffix">
+              <MappingFragment StoreEntitySet="Suffix">
+                <ScalarProperty Name="Suffix_Id" ColumnName="Suffix_Id" />
+                <ScalarProperty Name="Suffix1" ColumnName="Suffix" />
+                <ScalarProperty Name="Expense" ColumnName="Expense" />
+                <ScalarProperty Name="DivisionId_FK" ColumnName="DivisionId_FK" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="PCS_Model.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="Short" ColumnName="Short" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="Address4" ColumnName="Address4" />
+                <ScalarProperty Name="Address5" ColumnName="Address5" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Currency_FK" ColumnName="Currency_FK" />
+                <ScalarProperty Name="DivisionId_FK" ColumnName="DivisionId_FK" />
+                <ScalarProperty Name="CreditTerms" ColumnName="CreditTerms" />
+                <ScalarProperty Name="VAT_Group_FK" ColumnName="VAT_Group_FK" />
+                <ScalarProperty Name="VAT_Code_FK" ColumnName="VAT_Code_FK" />
+                <ScalarProperty Name="Acccount_Type" ColumnName="Acccount_Type" />
+                <ScalarProperty Name="NLCONTROL" ColumnName="NLCONTROL" />
+                <ScalarProperty Name="Supplier_Category" ColumnName="Supplier_Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supplier_Addition">
+            <EntityTypeMapping TypeName="PCS_Model.Supplier_Addition">
+              <MappingFragment StoreEntitySet="Supplier_Addition">
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="EmailPO" ColumnName="EmailPO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supplier_Quotes">
+            <EntityTypeMapping TypeName="PCS_Model.Supplier_Quotes">
+              <MappingFragment StoreEntitySet="Supplier_Quotes">
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="Account1" ColumnName="Account1" />
+                <ScalarProperty Name="File1" ColumnName="File1" />
+                <ScalarProperty Name="Account2" ColumnName="Account2" />
+                <ScalarProperty Name="File2" ColumnName="File2" />
+                <ScalarProperty Name="Acccount3" ColumnName="Acccount3" />
+                <ScalarProperty Name="File3" ColumnName="File3" />
+                <ScalarProperty Name="Account4" ColumnName="Account4" />
+                <ScalarProperty Name="File4" ColumnName="File4" />
+                <ScalarProperty Name="Account5" ColumnName="Account5" />
+                <ScalarProperty Name="File5" ColumnName="File5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supplier_SLA">
+            <EntityTypeMapping TypeName="PCS_Model.Supplier_SLA">
+              <MappingFragment StoreEntitySet="Supplier_SLA">
+                <ScalarProperty Name="Supplier_SLAId" ColumnName="Supplier_SLAId" />
+                <ScalarProperty Name="AccountId_FK" ColumnName="AccountId_FK" />
+                <ScalarProperty Name="SLA_Image" ColumnName="SLA_Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="PCS_Model.Team">
+              <MappingFragment StoreEntitySet="Teams">
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Terms_Condition">
+            <EntityTypeMapping TypeName="PCS_Model.Terms_Condition">
+              <MappingFragment StoreEntitySet="Terms_Condition">
+                <ScalarProperty Name="TermsCode" ColumnName="TermsCode" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="PCS_Model.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EmployeeNo" ColumnName="EmployeeNo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DepartmentId_FK" ColumnName="DepartmentId_FK" />
+                <ScalarProperty Name="CostCenter_FK" ColumnName="CostCenter_FK" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="PrintFormat" ColumnName="PrintFormat" />
+                <ScalarProperty Name="DivisionAccess" ColumnName="DivisionAccess" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="OperationsApprover" ColumnName="OperationsApprover" />
+                <ScalarProperty Name="FinanceApprover" ColumnName="FinanceApprover" />
+                <ScalarProperty Name="VendModAccess" ColumnName="VendModAccess" />
+                <ScalarProperty Name="Signature" ColumnName="Signature" />
+                <ScalarProperty Name="TeamApplicable" ColumnName="TeamApplicable" />
+                <ScalarProperty Name="TeamId_FK" ColumnName="TeamId_FK" />
+                <ScalarProperty Name="Out_Of_Office" ColumnName="Out_Of_Office" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Location_FK" ColumnName="Location_FK" />
+                <ScalarProperty Name="Terminal" ColumnName="Terminal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Authorise">
+            <EntityTypeMapping TypeName="PCS_Model.User_Authorise">
+              <MappingFragment StoreEntitySet="User_Authorise">
+                <ScalarProperty Name="UserAuthorisationId" ColumnName="UserAuthorisationId" />
+                <ScalarProperty Name="UserId_FK" ColumnName="UserId_FK" />
+                <ScalarProperty Name="User_Authorisor1" ColumnName="User_Authorisor1" />
+                <ScalarProperty Name="Auth1_Llimit" ColumnName="Auth1_Llimit" />
+                <ScalarProperty Name="Auth1_Ulimit" ColumnName="Auth1_Ulimit" />
+                <ScalarProperty Name="User_Authorisor2" ColumnName="User_Authorisor2" />
+                <ScalarProperty Name="Auth2_Llimit" ColumnName="Auth2_Llimit" />
+                <ScalarProperty Name="Auth2_Ulimit" ColumnName="Auth2_Ulimit" />
+                <ScalarProperty Name="User_Authorisor3" ColumnName="User_Authorisor3" />
+                <ScalarProperty Name="Auth3_Llimit" ColumnName="Auth3_Llimit" />
+                <ScalarProperty Name="Auth3_Ulimit" ColumnName="Auth3_Ulimit" />
+                <ScalarProperty Name="User_Authorisor4" ColumnName="User_Authorisor4" />
+                <ScalarProperty Name="Auth4_Llimit" ColumnName="Auth4_Llimit" />
+                <ScalarProperty Name="Auth4_Ulimit" ColumnName="Auth4_Ulimit" />
+                <ScalarProperty Name="User_Authorisor5" ColumnName="User_Authorisor5" />
+                <ScalarProperty Name="Auth5_Llimit" ColumnName="Auth5_Llimit" />
+                <ScalarProperty Name="Auth5_Ulimit" ColumnName="Auth5_Ulimit" />
+                <ScalarProperty Name="User_Authorisor6" ColumnName="User_Authorisor6" />
+                <ScalarProperty Name="Auth6_Llimit" ColumnName="Auth6_Llimit" />
+                <ScalarProperty Name="Auth6_Ulimit" ColumnName="Auth6_Ulimit" />
+                <ScalarProperty Name="User_Authorisor7" ColumnName="User_Authorisor7" />
+                <ScalarProperty Name="Auth7_Llimit" ColumnName="Auth7_Llimit" />
+                <ScalarProperty Name="Auth7_Ulimit" ColumnName="Auth7_Ulimit" />
+                <ScalarProperty Name="User_Authorisor8" ColumnName="User_Authorisor8" />
+                <ScalarProperty Name="Auth8_Llimit" ColumnName="Auth8_Llimit" />
+                <ScalarProperty Name="Auth8_Ulimit" ColumnName="Auth8_Ulimit" />
+                <ScalarProperty Name="User_Authorisor9" ColumnName="User_Authorisor9" />
+                <ScalarProperty Name="Auth9_Llimit" ColumnName="Auth9_Llimit" />
+                <ScalarProperty Name="Auth9_Ulimit" ColumnName="Auth9_Ulimit" />
+                <ScalarProperty Name="User_Authorisor10" ColumnName="User_Authorisor10" />
+                <ScalarProperty Name="Auth10_Llimit" ColumnName="Auth10_Llimit" />
+                <ScalarProperty Name="Auth10_Ulimit" ColumnName="Auth10_Ulimit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Setup">
+            <EntityTypeMapping TypeName="PCS_Model.User_Setup">
+              <MappingFragment StoreEntitySet="User_Setup">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ReceiveNotification" ColumnName="ReceiveNotification" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VAT_Code">
+            <EntityTypeMapping TypeName="PCS_Model.VAT_Code">
+              <MappingFragment StoreEntitySet="VAT_Code">
+                <ScalarProperty Name="VAT_Code1" ColumnName="VAT_Code" />
+                <ScalarProperty Name="VATCodeDesc" ColumnName="VATCodeDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VAT_Group">
+            <EntityTypeMapping TypeName="PCS_Model.VAT_Group">
+              <MappingFragment StoreEntitySet="VAT_Group">
+                <ScalarProperty Name="VAT_Group1" ColumnName="VAT_Group" />
+                <ScalarProperty Name="VATGroupDesc" ColumnName="VATGroupDesc" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="SLADJUST" ColumnName="SLADJUST" />
+                <ScalarProperty Name="PLADJUST" ColumnName="PLADJUST" />
+                <ScalarProperty Name="SDBASIS" ColumnName="SDBASIS" />
+                <ScalarProperty Name="EUGROUP" ColumnName="EUGROUP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Verified_Transaction">
+            <EntityTypeMapping TypeName="PCS_Model.Verified_Transaction">
+              <MappingFragment StoreEntitySet="Verified_Transaction">
+                <ScalarProperty Name="Verified_TransactionId" ColumnName="Verified_TransactionId" />
+                <ScalarProperty Name="OrderNo_FK" ColumnName="OrderNo_FK" />
+                <ScalarProperty Name="CostCenter_FK" ColumnName="CostCenter_FK" />
+                <ScalarProperty Name="Supplier_Ref" ColumnName="Supplier_Ref" />
+                <ScalarProperty Name="MiscRef" ColumnName="MiscRef" />
+                <ScalarProperty Name="Document_Date" ColumnName="Document_Date" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="AccountCode" ColumnName="AccountCode" />
+                <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+                <ScalarProperty Name="VATCode" ColumnName="VATCode" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Narrative" ColumnName="Narrative" />
+                <ScalarProperty Name="AccountId_FK" ColumnName="AccountId_FK" />
+                <ScalarProperty Name="PurchaseTransactionRef" ColumnName="PurchaseTransactionRef" />
+                <ScalarProperty Name="PostingDate" ColumnName="PostingDate" />
+                <ScalarProperty Name="VarifiedBy" ColumnName="VarifiedBy" />
+                <ScalarProperty Name="VarifiedDate" ColumnName="VarifiedDate" />
+                <ScalarProperty Name="ExportFlag" ColumnName="ExportFlag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
