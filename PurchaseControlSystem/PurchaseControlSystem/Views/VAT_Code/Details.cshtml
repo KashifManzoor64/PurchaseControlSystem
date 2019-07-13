@@ -1,4 +1,4 @@
-﻿@model PurchaseControlSystem.Models.Terms_Condition
+﻿@model PurchaseControlSystem.Models.VAT_Code
 
 @{
     Layout = null;
@@ -13,21 +13,21 @@
 </head>
 <body>
     <div>
-        <h4>Terms_Condition</h4>
+        <h4>VAT_Code</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayNameFor(model => model.VATCodeDesc)
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.Description)
+                @Html.DisplayFor(model => model.VATCodeDesc)
             </dd>
     
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.TermsCode }) |
+        @Html.ActionLink("Edit", "Edit", new { id = Model.VAT_Code1 }) |
         @Html.ActionLink("Back to List", "Index")
     </p>
 </body>

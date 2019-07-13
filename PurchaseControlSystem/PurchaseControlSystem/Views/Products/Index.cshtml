@@ -18,16 +18,16 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Product_Name)
+                @Html.DisplayNameFor(model => model.ProductName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Terms_code)
+                @Html.DisplayNameFor(model => model.TermsCode)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Product_Type)
+                @Html.DisplayNameFor(model => model.ProductType)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Pack_Size)
+                @Html.DisplayNameFor(model => model.PackSize)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Item_Category.Description)
@@ -38,16 +38,16 @@
     @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Product_Name)
+                @Html.DisplayFor(modelItem => item.ProductName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Terms_code)
+                @Html.DisplayFor(modelItem => item.TermsCode)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Product_Type)
+                @Html.DisplayFor(modelItem => item.ProductType)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Pack_Size)
+                @Html.DisplayFor(modelItem => item.PackSize)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Item_Category.Description)

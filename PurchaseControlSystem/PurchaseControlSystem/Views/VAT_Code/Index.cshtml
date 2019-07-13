@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PurchaseControlSystem.Models.Terms_Condition>
+﻿@model IEnumerable<PurchaseControlSystem.Models.VAT_Code>
 
 @{
     Layout = null;
@@ -18,7 +18,7 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayNameFor(model => model.VATCodeDesc)
             </th>
             <th></th>
         </tr>
@@ -26,12 +26,12 @@
     @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @Html.DisplayFor(modelItem => item.VATCodeDesc)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.TermsCode }) |
-                @Html.ActionLink("Details", "Details", new { id=item.TermsCode }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.TermsCode })
+                @Html.ActionLink("Edit", "Edit", new { id=item.VAT_Code1 }) |
+                @Html.ActionLink("Details", "Details", new { id=item.VAT_Code1 }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.VAT_Code1 })
             </td>
         </tr>
     }

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<PurchaseControlSystem.Models.Exchange_Rate>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Abbreviation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BankCTRL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiffCTRL)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Abbreviation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BankCTRL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiffCTRL)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Code }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Code }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Code })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

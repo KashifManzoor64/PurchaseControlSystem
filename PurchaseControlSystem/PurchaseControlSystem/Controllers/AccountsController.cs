@@ -10,107 +10,116 @@ using PurchaseControlSystem.Models;
 
 namespace PurchaseControlSystem.Controllers
 {
-    public class Item_CategoryController : Controller
+    public class AccountsController : Controller
     {
         private Purchase_Control_SystemEntities db = new Purchase_Control_SystemEntities();
 
-        // GET: Item_Category
+        // GET: Accounts
         public ActionResult Index()
         {
-            return View(db.Item_Category.ToList());
+            var accounts = db.Accounts.Include(a => a.Cost_Center).Include(a => a.Expense);
+            return View(accounts.ToList());
         }
 
-        // GET: Item_Category/Details/5
+        // GET: Accounts/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Item_Category item_Category = db.Item_Category.Find(id);
-            if (item_Category == null)
+            Account account = db.Accounts.Find(id);
+            if (account == null)
             {
                 return HttpNotFound();
             }
-            return View(item_Category);
+            return View(account);
         }
 
-        // GET: Item_Category/Create
+        // GET: Accounts/Create
         public ActionResult Create()
         {
+            ViewBag.CostCenterId_FK = new SelectList(db.Cost_Center, "CostCenterId", "Description");
+            ViewBag.ExpenseId_FK = new SelectList(db.Expenses, "ExpenseId", "Short");
             return View();
         }
 
-        // POST: Item_Category/Create
+        // POST: Accounts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ItemCategoryId,Description")] Item_Category item_Category)
+        public ActionResult Create([Bind(Include = "Account_Code,CostCenterId_FK,ExpenseId_FK,Account_Name,Create_Date,Created_by,Closed_date,Closed_by")] Account account)
         {
             if (ModelState.IsValid)
             {
-                db.Item_Category.Add(item_Category);
+                db.Accounts.Add(account);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(item_Category);
+            ViewBag.CostCenterId_FK = new SelectList(db.Cost_Center, "CostCenterId", "Description", account.CostCenterId_FK);
+            ViewBag.ExpenseId_FK = new SelectList(db.Expenses, "ExpenseId", "Short", account.ExpenseId_FK);
+            return View(account);
         }
 
-        // GET: Item_Category/Edit/5
+        // GET: Accounts/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Item_Category item_Category = db.Item_Category.Find(id);
-            if (item_Category == null)
+            Account account = db.Accounts.Find(id);
+            if (account == null)
             {
                 return HttpNotFound();
             }
-            return View(item_Category);
+            ViewBag.CostCenterId_FK = new SelectList(db.Cost_Center, "CostCenterId", "Description", account.CostCenterId_FK);
+            ViewBag.ExpenseId_FK = new SelectList(db.Expenses, "ExpenseId", "Short", account.ExpenseId_FK);
+            return View(account);
         }
 
-        // POST: Item_Category/Edit/5
+        // POST: Accounts/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ItemCategoryId,Description")] Item_Category item_Category)
+        public ActionResult Edit([Bind(Include = "Account_Code,CostCenterId_FK,ExpenseId_FK,Account_Name,Create_Date,Created_by,Closed_date,Closed_by")] Account account)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(item_Category).State = EntityState.Modified;
+                db.Entry(account).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(item_Category);
+            ViewBag.CostCenterId_FK = new SelectList(db.Cost_Center, "CostCenterId", "Description", account.CostCenterId_FK);
+            ViewBag.ExpenseId_FK = new SelectList(db.Expenses, "ExpenseId", "Short", account.ExpenseId_FK);
+            return View(account);
         }
 
-        // GET: Item_Category/Delete/5
+        // GET: Accounts/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Item_Category item_Category = db.Item_Category.Find(id);
-            if (item_Category == null)
+            Account account = db.Accounts.Find(id);
+            if (account == null)
             {
                 return HttpNotFound();
             }
-            return View(item_Category);
+            return View(account);
         }
 
-        // POST: Item_Category/Delete/5
+        // POST: Accounts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Item_Category item_Category = db.Item_Category.Find(id);
-            db.Item_Category.Remove(item_Category);
+            Account account = db.Accounts.Find(id);
+            db.Accounts.Remove(account);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

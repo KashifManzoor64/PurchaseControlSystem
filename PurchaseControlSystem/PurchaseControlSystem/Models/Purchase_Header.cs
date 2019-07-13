@@ -25,10 +25,10 @@ namespace PurchaseControlSystem.Models
         public int CostCenterId_FK { get; set; }
         public string AccountId_FK { get; set; }
         public string Status { get; set; }
-        public string Created_by { get; set; }
-        public System.DateTime Created_Date { get; set; }
+        public string CreatedBy { get; set; }
+        public System.DateTime CreatedDate { get; set; }
         public string AmendedBy { get; set; }
-        public System.DateTime AmendedDate { get; set; }
+        public Nullable<System.DateTime> AmendedDate { get; set; }
         public string Notes { get; set; }
         public string FinanceApproved { get; set; }
         public string OperationApproved { get; set; }

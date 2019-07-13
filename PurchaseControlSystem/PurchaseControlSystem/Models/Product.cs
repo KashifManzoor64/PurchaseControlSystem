@@ -27,7 +27,7 @@ namespace PurchaseControlSystem.Models
         public int ItemCategoryId_FK { get; set; }
         public int ProductType { get; set; }
         public int PackSize { get; set; }
-        
+    
         public virtual Item_Category Item_Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MRC> MRCs { get; set; }

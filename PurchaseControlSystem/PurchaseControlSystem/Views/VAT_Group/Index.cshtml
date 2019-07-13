@@ -1,0 +1,71 @@
+﻿@model IEnumerable<PurchaseControlSystem.Models.VAT_Group>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VATGroupDesc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Currency)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SLADJUST)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PLADJUST)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SDBASIS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EUGROUP)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VATGroupDesc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Currency)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SLADJUST)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PLADJUST)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDBASIS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EUGROUP)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.VAT_Group1 }) |
+                @Html.ActionLink("Details", "Details", new { id=item.VAT_Group1 }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.VAT_Group1 })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

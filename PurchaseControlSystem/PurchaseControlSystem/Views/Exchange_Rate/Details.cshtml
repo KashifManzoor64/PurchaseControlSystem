@@ -1,0 +1,66 @@
+﻿@model PurchaseControlSystem.Models.Exchange_Rate
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Exchange_Rate</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Abbreviation)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Abbreviation)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Rate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Rate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.BankCTRL)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BankCTRL)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DiffCTRL)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DiffCTRL)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Code }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
