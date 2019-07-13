@@ -1,0 +1,162 @@
+﻿@model PurchaseControlSystem.Models.Supplier
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Supplier</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Short)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Short)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Address1)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Address1)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Address2)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Address2)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Address3)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Address3)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Address4)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Address4)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Address5)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Address5)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Phone)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreditTerms)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreditTerms)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Acccount_Type)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Acccount_Type)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.NLCONTROL)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NLCONTROL)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Supplier_Category)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Supplier_Category)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Division.Division_Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Division.Division_Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Exchange_Rate.Description)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Exchange_Rate.Description)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.VAT_Code.VATCodeDesc)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.VAT_Code.VATCodeDesc)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.VAT_Group.VATGroupDesc)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.VAT_Group.VATGroupDesc)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.AccountId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

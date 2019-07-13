@@ -39,7 +39,7 @@ namespace PurchaseControlSystem.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
-            ViewBag.Item_CategoryId_FK = new SelectList(db.Item_Category, "Item_CategoryId", "Description");
+            ViewBag.ItemCategoryId_FK = new SelectList(db.Item_Category, "ItemCategoryId", "Description");
             return View();
         }
 
@@ -48,7 +48,7 @@ namespace PurchaseControlSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,Product_Name,Terms_code,Item_CategoryId_FK,Product_Type,Pack_Size")] Product product)
+        public ActionResult Create([Bind(Include = "ProductId,ProductName,TermsCode,ItemCategoryId_FK,ProductType,PackSize")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +57,7 @@ namespace PurchaseControlSystem.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Item_CategoryId_FK = new SelectList(db.Item_Category, "Item_CategoryId", "Description", product.ItemCategoryId_FK);
+            ViewBag.ItemCategoryId_FK = new SelectList(db.Item_Category, "ItemCategoryId", "Description", product.ItemCategoryId_FK);
             return View(product);
         }
 
@@ -73,7 +73,7 @@ namespace PurchaseControlSystem.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Item_CategoryId_FK = new SelectList(db.Item_Category, "ItemCategoryId", "Description", product.ItemCategoryId_FK);
+            ViewBag.ItemCategoryId_FK = new SelectList(db.Item_Category, "ItemCategoryId", "Description", product.ItemCategoryId_FK);
             return View(product);
         }
 
@@ -90,7 +90,7 @@ namespace PurchaseControlSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Item_CategoryId_FK = new SelectList(db.Item_Category, "ItemCategoryId", "Description", product.ItemCategoryId_FK);
+            ViewBag.ItemCategoryId_FK = new SelectList(db.Item_Category, "ItemCategoryId", "Description", product.ItemCategoryId_FK);
             return View(product);
         }
 

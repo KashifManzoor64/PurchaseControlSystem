@@ -134,11 +134,17 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Controllers\Cost_CenterController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\DivisionsController.cs" />
+    <Compile Include="Controllers\Exchange_RateController.cs" />
     <Compile Include="Controllers\Item_CategoryController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Controllers\Terms_ConditionController.cs" />
+    <Compile Include="Controllers\VAT_CodeController.cs" />
+    <Compile Include="Controllers\VAT_GroupController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -236,6 +242,7 @@
       <DependentUpon>PCS_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\PurchaseOrder_VM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />
@@ -256,7 +263,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\PCS_DB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PCS_DB.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Models\PCS_DB.edmx.diagram">
       <DependentUpon>PCS_DB.edmx</DependentUpon>
@@ -296,16 +302,46 @@
     <Content Include="Views\Terms_Condition\Details.cshtml" />
     <Content Include="Views\Terms_Condition\Edit.cshtml" />
     <Content Include="Views\Terms_Condition\Index.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Delete.cshtml" />
-    <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Item_Category\Create.cshtml" />
     <Content Include="Views\Item_Category\Delete.cshtml" />
     <Content Include="Views\Item_Category\Details.cshtml" />
     <Content Include="Views\Item_Category\Edit.cshtml" />
     <Content Include="Views\Item_Category\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Exchange_Rate\Create.cshtml" />
+    <Content Include="Views\Exchange_Rate\Delete.cshtml" />
+    <Content Include="Views\Exchange_Rate\Details.cshtml" />
+    <Content Include="Views\Exchange_Rate\Edit.cshtml" />
+    <Content Include="Views\Exchange_Rate\Index.cshtml" />
+    <Content Include="Views\Accounts\Create.cshtml" />
+    <Content Include="Views\Accounts\Delete.cshtml" />
+    <Content Include="Views\Accounts\Details.cshtml" />
+    <Content Include="Views\Accounts\Edit.cshtml" />
+    <Content Include="Views\Accounts\Index.cshtml" />
+    <Content Include="Views\Cost_Center\Create.cshtml" />
+    <Content Include="Views\Cost_Center\Delete.cshtml" />
+    <Content Include="Views\Cost_Center\Details.cshtml" />
+    <Content Include="Views\Cost_Center\Edit.cshtml" />
+    <Content Include="Views\Cost_Center\Index.cshtml" />
+    <Content Include="Views\VAT_Code\Create.cshtml" />
+    <Content Include="Views\VAT_Code\Delete.cshtml" />
+    <Content Include="Views\VAT_Code\Details.cshtml" />
+    <Content Include="Views\VAT_Code\Edit.cshtml" />
+    <Content Include="Views\VAT_Code\Index.cshtml" />
+    <Content Include="Views\VAT_Group\Create.cshtml" />
+    <Content Include="Views\VAT_Group\Delete.cshtml" />
+    <Content Include="Views\VAT_Group\Details.cshtml" />
+    <Content Include="Views\VAT_Group\Edit.cshtml" />
+    <Content Include="Views\VAT_Group\Index.cshtml" />
+    <Content Include="Views\Suppliers\Create.cshtml" />
+    <Content Include="Views\Suppliers\Delete.cshtml" />
+    <Content Include="Views\Suppliers\Details.cshtml" />
+    <Content Include="Views\Suppliers\Edit.cshtml" />
+    <Content Include="Views\Suppliers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

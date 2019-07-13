@@ -41,6 +41,7 @@ namespace PurchaseControlSystem.Models
         public string Acccount_Type { get; set; }
         public int NLCONTROL { get; set; }
         public string Supplier_Category { get; set; }
+        public string Email { get; set; }
     
         public virtual Division Division { get; set; }
         public virtual Exchange_Rate Exchange_Rate { get; set; }

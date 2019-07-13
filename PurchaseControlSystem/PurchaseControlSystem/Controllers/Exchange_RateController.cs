@@ -10,107 +10,107 @@ using PurchaseControlSystem.Models;
 
 namespace PurchaseControlSystem.Controllers
 {
-    public class Item_CategoryController : Controller
+    public class Exchange_RateController : Controller
     {
         private Purchase_Control_SystemEntities db = new Purchase_Control_SystemEntities();
 
-        // GET: Item_Category
+        // GET: Exchange_Rate
         public ActionResult Index()
         {
-            return View(db.Item_Category.ToList());
+            return View(db.Exchange_Rate.ToList());
         }
 
-        // GET: Item_Category/Details/5
-        public ActionResult Details(int? id)
+        // GET: Exchange_Rate/Details/5
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Item_Category item_Category = db.Item_Category.Find(id);
-            if (item_Category == null)
+            Exchange_Rate exchange_Rate = db.Exchange_Rate.Find(id);
+            if (exchange_Rate == null)
             {
                 return HttpNotFound();
             }
-            return View(item_Category);
+            return View(exchange_Rate);
         }
 
-        // GET: Item_Category/Create
+        // GET: Exchange_Rate/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Item_Category/Create
+        // POST: Exchange_Rate/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ItemCategoryId,Description")] Item_Category item_Category)
+        public ActionResult Create([Bind(Include = "Code,Description,Abbreviation,Rate,BankCTRL,DiffCTRL")] Exchange_Rate exchange_Rate)
         {
             if (ModelState.IsValid)
             {
-                db.Item_Category.Add(item_Category);
+                db.Exchange_Rate.Add(exchange_Rate);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(item_Category);
+            return View(exchange_Rate);
         }
 
-        // GET: Item_Category/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: Exchange_Rate/Edit/5
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Item_Category item_Category = db.Item_Category.Find(id);
-            if (item_Category == null)
+            Exchange_Rate exchange_Rate = db.Exchange_Rate.Find(id);
+            if (exchange_Rate == null)
             {
                 return HttpNotFound();
             }
-            return View(item_Category);
+            return View(exchange_Rate);
         }
 
-        // POST: Item_Category/Edit/5
+        // POST: Exchange_Rate/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ItemCategoryId,Description")] Item_Category item_Category)
+        public ActionResult Edit([Bind(Include = "Code,Description,Abbreviation,Rate,BankCTRL,DiffCTRL")] Exchange_Rate exchange_Rate)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(item_Category).State = EntityState.Modified;
+                db.Entry(exchange_Rate).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(item_Category);
+            return View(exchange_Rate);
         }
 
-        // GET: Item_Category/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: Exchange_Rate/Delete/5
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Item_Category item_Category = db.Item_Category.Find(id);
-            if (item_Category == null)
+            Exchange_Rate exchange_Rate = db.Exchange_Rate.Find(id);
+            if (exchange_Rate == null)
             {
                 return HttpNotFound();
             }
-            return View(item_Category);
+            return View(exchange_Rate);
         }
 
-        // POST: Item_Category/Delete/5
+        // POST: Exchange_Rate/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
-            Item_Category item_Category = db.Item_Category.Find(id);
-            db.Item_Category.Remove(item_Category);
+            Exchange_Rate exchange_Rate = db.Exchange_Rate.Find(id);
+            db.Exchange_Rate.Remove(exchange_Rate);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

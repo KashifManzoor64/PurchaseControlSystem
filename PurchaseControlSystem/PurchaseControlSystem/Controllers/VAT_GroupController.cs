@@ -10,107 +10,107 @@ using PurchaseControlSystem.Models;
 
 namespace PurchaseControlSystem.Controllers
 {
-    public class Item_CategoryController : Controller
+    public class VAT_GroupController : Controller
     {
         private Purchase_Control_SystemEntities db = new Purchase_Control_SystemEntities();
 
-        // GET: Item_Category
+        // GET: VAT_Group
         public ActionResult Index()
         {
-            return View(db.Item_Category.ToList());
+            return View(db.VAT_Group.ToList());
         }
 
-        // GET: Item_Category/Details/5
-        public ActionResult Details(int? id)
+        // GET: VAT_Group/Details/5
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Item_Category item_Category = db.Item_Category.Find(id);
-            if (item_Category == null)
+            VAT_Group vAT_Group = db.VAT_Group.Find(id);
+            if (vAT_Group == null)
             {
                 return HttpNotFound();
             }
-            return View(item_Category);
+            return View(vAT_Group);
         }
 
-        // GET: Item_Category/Create
+        // GET: VAT_Group/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Item_Category/Create
+        // POST: VAT_Group/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ItemCategoryId,Description")] Item_Category item_Category)
+        public ActionResult Create([Bind(Include = "VAT_Group1,VATGroupDesc,Currency,SLADJUST,PLADJUST,SDBASIS,EUGROUP")] VAT_Group vAT_Group)
         {
             if (ModelState.IsValid)
             {
-                db.Item_Category.Add(item_Category);
+                db.VAT_Group.Add(vAT_Group);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(item_Category);
+            return View(vAT_Group);
         }
 
-        // GET: Item_Category/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: VAT_Group/Edit/5
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Item_Category item_Category = db.Item_Category.Find(id);
-            if (item_Category == null)
+            VAT_Group vAT_Group = db.VAT_Group.Find(id);
+            if (vAT_Group == null)
             {
                 return HttpNotFound();
             }
-            return View(item_Category);
+            return View(vAT_Group);
         }
 
-        // POST: Item_Category/Edit/5
+        // POST: VAT_Group/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ItemCategoryId,Description")] Item_Category item_Category)
+        public ActionResult Edit([Bind(Include = "VAT_Group1,VATGroupDesc,Currency,SLADJUST,PLADJUST,SDBASIS,EUGROUP")] VAT_Group vAT_Group)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(item_Category).State = EntityState.Modified;
+                db.Entry(vAT_Group).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(item_Category);
+            return View(vAT_Group);
         }
 
-        // GET: Item_Category/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: VAT_Group/Delete/5
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Item_Category item_Category = db.Item_Category.Find(id);
-            if (item_Category == null)
+            VAT_Group vAT_Group = db.VAT_Group.Find(id);
+            if (vAT_Group == null)
             {
                 return HttpNotFound();
             }
-            return View(item_Category);
+            return View(vAT_Group);
         }
 
-        // POST: Item_Category/Delete/5
+        // POST: VAT_Group/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
-            Item_Category item_Category = db.Item_Category.Find(id);
-            db.Item_Category.Remove(item_Category);
+            VAT_Group vAT_Group = db.VAT_Group.Find(id);
+            db.VAT_Group.Remove(vAT_Group);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

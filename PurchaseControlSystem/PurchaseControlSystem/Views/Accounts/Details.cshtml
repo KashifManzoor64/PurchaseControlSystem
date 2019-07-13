@@ -1,0 +1,82 @@
+﻿@model PurchaseControlSystem.Models.Account
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Account</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Account_Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Account_Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Create_Date)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Create_Date)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Created_by)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Created_by)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Closed_date)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Closed_date)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Closed_by)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Closed_by)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Cost_Center.Description)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Cost_Center.Description)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Expense.Short)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Expense.Short)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Account_Code }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

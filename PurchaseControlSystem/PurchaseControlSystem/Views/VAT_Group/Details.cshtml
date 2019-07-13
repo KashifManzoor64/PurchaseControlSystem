@@ -1,0 +1,74 @@
+﻿@model PurchaseControlSystem.Models.VAT_Group
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>VAT_Group</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.VATGroupDesc)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.VATGroupDesc)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Currency)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Currency)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SLADJUST)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SLADJUST)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PLADJUST)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PLADJUST)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SDBASIS)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SDBASIS)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.EUGROUP)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.EUGROUP)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.VAT_Group1 }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

@@ -110,7 +110,7 @@
           <Key>
             <PropertyRef Name="ProductId" />
           </Key>
-          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TermsCode" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ItemCategoryId_FK" Type="int" Nullable="false" />
@@ -125,10 +125,10 @@
           <Property Name="CostCenterId_FK" Type="int" Nullable="false" />
           <Property Name="AccountId_FK" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Created_by" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Created_Date" Type="date" Nullable="false" />
-          <Property Name="AmendedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="AmendedDate" Type="date" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="date" Nullable="false" />
+          <Property Name="AmendedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="AmendedDate" Type="date" />
           <Property Name="Notes" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="FinanceApproved" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="OperationApproved" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -189,6 +189,7 @@
           <Property Name="Acccount_Type" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="NLCONTROL" Type="int" Nullable="false" />
           <Property Name="Supplier_Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Supplier_Addition">
           <Key>
@@ -1063,10 +1064,10 @@
           <Property Name="CostCenterId_FK" Type="Int32" Nullable="false" />
           <Property Name="AccountId_FK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Created_Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="AmendedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AmendedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AmendedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AmendedDate" Type="DateTime" Precision="0" />
           <Property Name="Notes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FinanceApproved" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="OperationApproved" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -1147,6 +1148,7 @@
           <NavigationProperty Name="VAT_Code" Relationship="Self.FK_Supplier_Supplier" FromRole="Supplier" ToRole="VAT_Code" />
           <NavigationProperty Name="VAT_Group" Relationship="Self.FK_Supplier_VAT_Group" FromRole="Supplier" ToRole="VAT_Group" />
           <NavigationProperty Name="Verified_Transaction" Relationship="Self.FK_Verified_Transaction_Verified_Transaction" FromRole="Supplier" ToRole="Verified_Transaction" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Supplier_Addition">
           <Key>
@@ -2015,8 +2017,8 @@
                 <ScalarProperty Name="CostCenterId_FK" ColumnName="CostCenterId_FK" />
                 <ScalarProperty Name="AccountId_FK" ColumnName="AccountId_FK" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Created_by" ColumnName="Created_by" />
-                <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="AmendedBy" ColumnName="AmendedBy" />
                 <ScalarProperty Name="AmendedDate" ColumnName="AmendedDate" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
@@ -2065,6 +2067,7 @@
           <EntitySetMapping Name="Suppliers">
             <EntityTypeMapping TypeName="PCS_Model.Supplier">
               <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="AccountId" ColumnName="AccountId" />
                 <ScalarProperty Name="Short" ColumnName="Short" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

@@ -1,0 +1,137 @@
+﻿@model IEnumerable<PurchaseControlSystem.Models.Supplier>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Short)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreditTerms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Acccount_Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NLCONTROL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Supplier_Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Division.Division_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exchange_Rate.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VAT_Code.VATCodeDesc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VAT_Group.VATGroupDesc)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Short)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address5)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreditTerms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Acccount_Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NLCONTROL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Supplier_Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Division.Division_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Exchange_Rate.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VAT_Code.VATCodeDesc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VAT_Group.VATGroupDesc)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.AccountId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.AccountId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.AccountId })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
