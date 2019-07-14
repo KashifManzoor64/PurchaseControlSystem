@@ -193,6 +193,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PCS_DB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\PCS_DB1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PCS_DB.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Product.cs">
       <DependentUpon>PCS_DB.tt</DependentUpon>
     </Compile>
@@ -263,6 +268,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\PCS_DB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PCS_DB1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Models\PCS_DB.edmx.diagram">
       <DependentUpon>PCS_DB.edmx</DependentUpon>
