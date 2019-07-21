@@ -24,14 +24,14 @@ namespace PurchaseControlSystem.Models
         public int OrderNo { get; set; }
         public int CostCenterId_FK { get; set; }
         public string AccountId_FK { get; set; }
-        public string Status { get; set; }
-        public string CreatedBy { get; set; }
-        public System.DateTime CreatedDate { get; set; }
-        public string AmendedBy { get; set; }
-        public Nullable<System.DateTime> AmendedDate { get; set; }
+        public string status { get; set; }
+        public string Created_by { get; set; }
+        public System.DateTime Created_Date { get; set; }
+        public string amended_by { get; set; }
+        public System.DateTime Amended_date { get; set; }
         public string Notes { get; set; }
-        public string FinanceApproved { get; set; }
-        public string OperationApproved { get; set; }
+        public string Finance_Approved { get; set; }
+        public string Operation_Approved { get; set; }
         public string InitalsBy { get; set; }
         public string Comments { get; set; }
     

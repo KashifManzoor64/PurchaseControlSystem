@@ -21,7 +21,7 @@ namespace PurchaseControlSystem.Models
         }
     
         public string VAT_Code1 { get; set; }
-        public string VATCodeDesc { get; set; }
+        public string VATCode_Desc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Supplier> Suppliers { get; set; }

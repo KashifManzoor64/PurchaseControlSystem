@@ -14,7 +14,7 @@ namespace PurchaseControlSystem.Models
     
     public partial class Terms_Condition
     {
-        public int TermsCode { get; set; }
+        public int Terms_code { get; set; }
         public string Description { get; set; }
     }
 }

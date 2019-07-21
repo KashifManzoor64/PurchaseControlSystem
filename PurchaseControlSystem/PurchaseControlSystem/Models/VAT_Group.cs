@@ -21,7 +21,7 @@ namespace PurchaseControlSystem.Models
         }
     
         public string VAT_Group1 { get; set; }
-        public string VATGroupDesc { get; set; }
+        public string VATGroup_Desc { get; set; }
         public string Currency { get; set; }
         public int SLADJUST { get; set; }
         public int PLADJUST { get; set; }

@@ -35,13 +35,12 @@ namespace PurchaseControlSystem.Models
         public string Phone { get; set; }
         public string Currency_FK { get; set; }
         public int DivisionId_FK { get; set; }
-        public int CreditTerms { get; set; }
+        public int Credit_Terms { get; set; }
         public string VAT_Group_FK { get; set; }
         public string VAT_Code_FK { get; set; }
-        public string Acccount_Type { get; set; }
+        public string Acct_Type { get; set; }
         public int NLCONTROL { get; set; }
         public string Supplier_Category { get; set; }
-        public string Email { get; set; }
     
         public virtual Division Division { get; set; }
         public virtual Exchange_Rate Exchange_Rate { get; set; }

@@ -22,7 +22,7 @@ namespace PurchaseControlSystem.Models
     
         public string Code { get; set; }
         public string Description { get; set; }
-        public string Abbreviation { get; set; }
+        public string Abbrev { get; set; }
         public string Rate { get; set; }
         public int BankCTRL { get; set; }
         public int DiffCTRL { get; set; }

@@ -22,11 +22,11 @@ namespace PurchaseControlSystem.Models
         }
     
         public int ProductId { get; set; }
-        public string ProductName { get; set; }
-        public string TermsCode { get; set; }
-        public int ItemCategoryId_FK { get; set; }
-        public int ProductType { get; set; }
-        public int PackSize { get; set; }
+        public string Product_Name { get; set; }
+        public string Terms_code { get; set; }
+        public int Item_CategoryId_FK { get; set; }
+        public int Product_Type { get; set; }
+        public int Pack_Size { get; set; }
     
         public virtual Item_Category Item_Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

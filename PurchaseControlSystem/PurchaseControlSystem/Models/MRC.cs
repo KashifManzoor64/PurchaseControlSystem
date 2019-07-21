@@ -20,8 +20,8 @@ namespace PurchaseControlSystem.Models
         public string Description { get; set; }
         public decimal Unit { get; set; }
         public int Pack_Size { get; set; }
-        public decimal UnitRate { get; set; }
-        public decimal OtherCharges { get; set; }
+        public decimal Unit_Rate { get; set; }
+        public decimal Other_Charges { get; set; }
     
         public virtual Product Product { get; set; }
         public virtual Supplier Supplier { get; set; }

@@ -1,0 +1,153 @@
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active,
+.form-control:focus,
+span:focus
+select:focus
+{
+    outline:none !important;
+    box-shadow: 0 0 0 0 !important;
+}
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+body {
+    margin:0px;
+    padding:0px;
+    font-family: 'Raleway', sans-serif;
+    /*font-size:14px;*/
+    line-height:24px;
+}
+.primary-text{
+    color: #3B5998;
+}
+.primary-bg{
+    background-color: #3B5998;
+}
+.primary-border{
+    border: 1px solid #3b5998;
+}
+.primar-border{
+    border: 1px solid #3b5998;
+}
+.orange-text{
+    color: #ffa500;
+}
+.orange-bg{
+    background-color: #ffa500;
+}
+.orange-border{
+    border: 1px solid #ffa500;
+}
+.light{
+    color: #8c8c8c;
+}
+.light-bg{
+    background: #f5f5f5;
+}
+#pills-tab .nav-link.active{
+    background-color: #3b5998;
+}
+.box{
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2), 0 2px 4px 0 rgba(0,0,0,.4);
+}
+.font{
+    font-size: 13px;
+}
+.font2{
+    font-size: 16px;
+}
+.w-50{
+    width: 49% !important;
+}
+.input-height{
+    height: 30px;
+}
+.product-purchase-form{
+
+}
+.table th {
+    padding: 0.50rem !important;
+}
+.fa-width{
+    width:35px;
+}
+/*Custom Check Box*/
+.checkbox-bootstrap {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    /*font-size: 22px;*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+/* Hide the browser's default checkbox */
+.checkbox-bootstrap input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    height: 17px;
+    width: 17px;
+    background-color: #eee;
+    border: 1px solid #777;
+    border-radius: 3px;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox-bootstrap:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+/* When the checkbox is checked, add a blue background */
+.checkbox-bootstrap input:checked ~ .checkmark {
+    background-color: #3b5998;
+}
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+/* Show the checkmark when checked */
+.checkbox-bootstrap input:checked ~ .checkmark:after {
+    display: block;
+}
+/* Style the checkmark/indicator */
+.checkmark:after {
+    left: 5px;
+    top: 1.5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/*calender up down remove*/
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}

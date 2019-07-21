@@ -16,7 +16,7 @@ namespace PurchaseControlSystem
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Divisions", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Users", action = "LogIn", id = UrlParameter.Optional }
             );
         }
     }

@@ -15,6 +15,6 @@ namespace PurchaseControlSystem.Models
     public partial class User_Setup
     {
         public string UserName { get; set; }
-        public string ReceiveNotification { get; set; }
+        public string Receive_Notification { get; set; }
     }
 }

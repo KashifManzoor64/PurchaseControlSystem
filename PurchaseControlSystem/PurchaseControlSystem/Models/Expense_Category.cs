@@ -16,7 +16,7 @@ namespace PurchaseControlSystem.Models
     {
         public int Expense_Category_Id { get; set; }
         public string Description { get; set; }
-        public int ItemCategoryId_FK { get; set; }
+        public int Item_CategoryId_FK { get; set; }
         public int ExpenseId_FK { get; set; }
     
         public virtual Expense Expense { get; set; }

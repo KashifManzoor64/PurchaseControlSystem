@@ -1,0 +1,100 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>POS</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/assets/css/style.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,300italic,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,300italic,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+</head>
+<body>
+    <section class="light-bg py-5 min-vh-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 my-5">
+                </div>
+                <div class="col-lg-4 col-md-6 col-11 box mb-5 px-0 mx-auto rounded bg-white">
+                    <div class="px-md-4 py-md-3">
+                        <form class="" id="frmlogin">
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <h5 class="text-center orang-text font-weight-normal py-3 font-weight-bold get-new mb-0">Sign In</h5>
+                                </div>
+                                <div class="col-12 input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text px-0 text-center fa-width"> <i class="fa fa-envelope w-100 text-center primary-text font"></i> </span>
+                                    </div>
+                                    <input name="Username_FK" value="" class="form-control font" placeholder="Email" type="email" >
+                                </div>
+                                <div class="col-12 input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text px-0 text-center fa-width"> <i class="fa fa-lock w-100 text-center primary-text"></i> </span>
+                                    </div>
+                                    <input name="Password" class="form-control font" placeholder="Password" type="password">
+                                </div>
+                                <div class="w-100 d-block mb-2 px-3">
+                                    <div class="d-inline-block rounded primary-text py-1 w-50">
+                                        <label class="w-100 pt-2 mb-0 font checkbox-bootstrap">
+                                            <input type="checkbox">
+                                            <span class="font checkmark"></span>
+                                            Remember me
+                                        </label>
+                                        <!--<span class="font">Remember me</span>-->
+                                    </div>
+                                    <div class="d-inline-block rounded primary-text py-1 w-50 text-right">
+                                        <a href="#" class="primary-text px-2 py-1 w-100 font" target="_blank">Forgot Password</a>
+                                    </div>
+                                </div>
+                                <div class="col-12 form-group text-right">
+                                    <button type="submit" class="btn primary-bg mx-auto text-white font px-4 w-100 font-weight-bold">Sign In</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery Popper JS  Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
+<script src="~/Content/jquery-1.10.2.js"></script>
+
+<script>
+    $(document).ready(function () {
+        debugger
+        $("form").submit(function () {
+            debugger
+            $.ajax({
+
+                type: 'post',
+                url: '/Users/LogIn',
+                data: $("#frmlogin").serialize(),
+                success: function (res) {
+                    if (res == "no") {
+                        alert("You enter wrong Detail");
+                    }
+
+                    else if (res == "ok") {
+                        location.href = '/Startpage/Index';//REDIRECT
+                    }
+
+
+                }
+            });
+            return false
+        });
+    });
+
+</script>

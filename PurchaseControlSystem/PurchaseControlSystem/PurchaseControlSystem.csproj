@@ -143,40 +143,56 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Controllers\Terms_ConditionController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\VAT_CodeController.cs" />
     <Compile Include="Controllers\VAT_GroupController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cost_Center.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Department.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Division.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Exchange_Rate.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Expense.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Expense_Category.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Item_Category.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Location.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\MRC.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PCS_DB.Context.cs">
       <AutoGen>True</AutoGen>
@@ -194,61 +210,81 @@
       <DependentUpon>PCS_DB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Purchase_Header.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Purchase_Transaction.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Suffix.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Supplier.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Supplier_Addition.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Supplier_Quotes.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Supplier_SLA.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Team.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Terms_Condition.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User_Authorise.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User_Setup.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\VAT_Code.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\VAT_Group.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Verified_Transaction.cs">
-      <DependentUpon>PCS_DB.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\PurchaseOrder_VM.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\css\bootstrap.css" />
+    <Content Include="Content\assets\css\style.css" />
+    <Content Include="Content\assets\fonts\css\font-awesome.css" />
+    <Content Include="Content\assets\fonts\css\font-awesome.min.css" />
+    <Content Include="Content\assets\fonts\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\assets\fonts\HELP-US-OUT.txt" />
+    <Content Include="Content\assets\js\jquery3.3.1.js" />
+    <Content Include="Content\assets\js\main.js" />
+    <Content Include="Content\jquery-1.10.2.js" />
+    <Content Include="Content\jquery3.3.1.js" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\PCS_DB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PCS_DB.edmx</DependentUpon>
@@ -267,6 +303,46 @@
     <Content Include="Models\PCS_DB.edmx.diagram">
       <DependentUpon>PCS_DB.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\assets\fonts\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\assets\fonts\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\assets\fonts\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\assets\fonts\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\assets\fonts\fonts\FontAwesome.otf" />
+    <Content Include="Content\assets\fonts\less\animated.less" />
+    <Content Include="Content\assets\fonts\less\bordered-pulled.less" />
+    <Content Include="Content\assets\fonts\less\core.less" />
+    <Content Include="Content\assets\fonts\less\fixed-width.less" />
+    <Content Include="Content\assets\fonts\less\font-awesome.less" />
+    <Content Include="Content\assets\fonts\less\icons.less" />
+    <Content Include="Content\assets\fonts\less\larger.less" />
+    <Content Include="Content\assets\fonts\less\list.less" />
+    <Content Include="Content\assets\fonts\less\mixins.less" />
+    <Content Include="Content\assets\fonts\less\path.less" />
+    <Content Include="Content\assets\fonts\less\rotated-flipped.less" />
+    <Content Include="Content\assets\fonts\less\screen-reader.less" />
+    <Content Include="Content\assets\fonts\less\stacked.less" />
+    <Content Include="Content\assets\fonts\less\variables.less" />
+    <Content Include="Content\assets\fonts\scss\font-awesome.scss" />
+    <Content Include="Content\assets\fonts\scss\_animated.scss" />
+    <Content Include="Content\assets\fonts\scss\_bordered-pulled.scss" />
+    <Content Include="Content\assets\fonts\scss\_core.scss" />
+    <Content Include="Content\assets\fonts\scss\_fixed-width.scss" />
+    <Content Include="Content\assets\fonts\scss\_icons.scss" />
+    <Content Include="Content\assets\fonts\scss\_larger.scss" />
+    <Content Include="Content\assets\fonts\scss\_list.scss" />
+    <Content Include="Content\assets\fonts\scss\_mixins.scss" />
+    <Content Include="Content\assets\fonts\scss\_path.scss" />
+    <Content Include="Content\assets\fonts\scss\_rotated-flipped.scss" />
+    <Content Include="Content\assets\fonts\scss\_screen-reader.scss" />
+    <Content Include="Content\assets\fonts\scss\_stacked.scss" />
+    <Content Include="Content\assets\fonts\scss\_variables.scss" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -278,6 +354,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <None Include="Views\Users\login.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -345,6 +422,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\assets\images\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>

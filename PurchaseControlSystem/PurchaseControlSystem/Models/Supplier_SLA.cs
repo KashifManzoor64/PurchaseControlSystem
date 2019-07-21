@@ -16,7 +16,7 @@ namespace PurchaseControlSystem.Models
     {
         public int Supplier_SLAId { get; set; }
         public string AccountId_FK { get; set; }
-        public string SLA_Image { get; set; }
+        public string SLA_image { get; set; }
     
         public virtual Supplier Supplier { get; set; }
     }

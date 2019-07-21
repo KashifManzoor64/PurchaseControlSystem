@@ -22,15 +22,15 @@ namespace PurchaseControlSystem.Models
         public decimal UnitPrice { get; set; }
         public decimal Quantity { get; set; }
         public decimal GrossValue { get; set; }
-        public System.DateTime ReceiveDate { get; set; }
-        public string ReceiveBy { get; set; }
-        public string VarifiedBy { get; set; }
-        public System.DateTime VarifiedDate { get; set; }
-        public int ItemCategoryId_FK { get; set; }
-        public int TermsCode { get; set; }
-        public int VerifiedTransactionId_FK { get; set; }
+        public System.DateTime Receive_date { get; set; }
+        public string receive_by { get; set; }
+        public string Varified_by { get; set; }
+        public System.DateTime Varified_date { get; set; }
+        public int Item_CategoryId_FK { get; set; }
+        public int Terms_code { get; set; }
+        public int Verified_TransactionId_FK { get; set; }
         public string AccountId_FK { get; set; }
-        public string TermsPrinted { get; set; }
+        public string Terms_Printed { get; set; }
         public string Suffix { get; set; }
     
         public virtual Cost_Center Cost_Center { get; set; }

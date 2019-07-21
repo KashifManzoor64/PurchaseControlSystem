@@ -14,14 +14,8 @@ namespace PurchaseControlSystem.Models
     
     public partial class User
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
-        {
-            this.User_Authorise = new HashSet<User_Authorise>();
-        }
-    
-        public int UserId { get; set; }
-        public string Username { get; set; }
+        public int User_Id { get; set; }
+        public string Username_FK { get; set; }
         public string Password { get; set; }
         public int EmployeeNo { get; set; }
         public string Name { get; set; }
@@ -33,8 +27,8 @@ namespace PurchaseControlSystem.Models
         public string PrintFormat { get; set; }
         public int DivisionAccess { get; set; }
         public int Grade { get; set; }
-        public bool OperationsApprover { get; set; }
-        public bool FinanceApprover { get; set; }
+        public bool Operations_Approver { get; set; }
+        public bool Finance_Approver { get; set; }
         public bool VendModAccess { get; set; }
         public string Signature { get; set; }
         public string TeamApplicable { get; set; }
@@ -50,7 +44,6 @@ namespace PurchaseControlSystem.Models
         public virtual Department Department { get; set; }
         public virtual Location Location { get; set; }
         public virtual Team Team { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User_Authorise> User_Authorise { get; set; }
+        public virtual User_Authorise User_Authorise { get; set; }
     }
 }

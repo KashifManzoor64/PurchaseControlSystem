@@ -22,7 +22,7 @@ namespace PurchaseControlSystem.Models
             this.Purchase_Transaction = new HashSet<Purchase_Transaction>();
         }
     
-        public int ItemCategoryId { get; set; }
+        public int Item_CategoryId { get; set; }
         public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

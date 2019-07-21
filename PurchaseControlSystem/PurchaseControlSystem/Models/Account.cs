@@ -20,7 +20,7 @@ namespace PurchaseControlSystem.Models
         public string Account_Name { get; set; }
         public System.DateTime Create_Date { get; set; }
         public string Created_by { get; set; }
-        public System.DateTime Closed_date { get; set; }
+        public int Closed_date { get; set; }
         public string Closed_by { get; set; }
     
         public virtual Cost_Center Cost_Center { get; set; }

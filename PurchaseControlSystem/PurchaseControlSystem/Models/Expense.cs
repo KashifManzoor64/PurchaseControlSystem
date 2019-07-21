@@ -24,7 +24,7 @@ namespace PurchaseControlSystem.Models
         public int ExpenseId { get; set; }
         public string Short { get; set; }
         public string Description { get; set; }
-        public string AccountName { get; set; }
+        public string Account_Name { get; set; }
         public string Actype { get; set; }
         public string Exgroup { get; set; }
         public string BANK { get; set; }

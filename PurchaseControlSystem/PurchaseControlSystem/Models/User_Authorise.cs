@@ -14,8 +14,13 @@ namespace PurchaseControlSystem.Models
     
     public partial class User_Authorise
     {
-        public int UserAuthorisationId { get; set; }
-        public int UserId_FK { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User_Authorise()
+        {
+            this.Users = new HashSet<User>();
+        }
+    
+        public string Username { get; set; }
         public string User_Authorisor1 { get; set; }
         public Nullable<decimal> Auth1_Llimit { get; set; }
         public Nullable<decimal> Auth1_Ulimit { get; set; }
@@ -47,6 +52,7 @@ namespace PurchaseControlSystem.Models
         public Nullable<decimal> Auth10_Llimit { get; set; }
         public Nullable<decimal> Auth10_Ulimit { get; set; }
     
-        public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
     }
 }

@@ -24,20 +24,20 @@ namespace PurchaseControlSystem.Models
         public int OrderNo_FK { get; set; }
         public int CostCenter_FK { get; set; }
         public string Supplier_Ref { get; set; }
-        public string MiscRef { get; set; }
+        public string Misc_ref { get; set; }
         public System.DateTime Document_Date { get; set; }
-        public System.DateTime DueDate { get; set; }
+        public System.DateTime Due_Date { get; set; }
         public int AccountCode { get; set; }
         public string Suffix { get; set; }
         public string VATCode { get; set; }
         public decimal Amount { get; set; }
         public string Narrative { get; set; }
         public string AccountId_FK { get; set; }
-        public string PurchaseTransactionRef { get; set; }
+        public string Ptran_Ref { get; set; }
         public System.DateTime PostingDate { get; set; }
-        public string VarifiedBy { get; set; }
-        public System.DateTime VarifiedDate { get; set; }
-        public string ExportFlag { get; set; }
+        public string Varified_by { get; set; }
+        public System.DateTime Varified_date { get; set; }
+        public string Export_Flg { get; set; }
     
         public virtual Cost_Center Cost_Center { get; set; }
         public virtual Purchase_Header Purchase_Header { get; set; }
