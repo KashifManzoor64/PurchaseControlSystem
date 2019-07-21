@@ -1,0 +1,110 @@
+﻿@model IEnumerable<PurchaseControlSystem.Models.Purchase_Header>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupplierName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupplierAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AmendedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AmendedDate)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.InitalsBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cost_Center.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department.Department_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Supplier.Short)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SupplierName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SupplierAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AmendedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AmendedDate)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.InitalsBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comments)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cost_Center.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department.Department_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Supplier.Short)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.OrderNo }) |
+                    @*@Html.ActionLink("Details", "Details", new { id=item.OrderNo })
+                      @Html.ActionLink("Delete", "Delete", new { id=item.OrderNo })|*@
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

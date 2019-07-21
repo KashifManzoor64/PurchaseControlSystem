@@ -141,6 +141,9 @@
     <Compile Include="Controllers\Exchange_RateController.cs" />
     <Compile Include="Controllers\Item_CategoryController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\PurchaseOrderController.cs" />
+    <Compile Include="Controllers\Purchase_HeaderController.cs" />
+    <Compile Include="Controllers\Purchase_TransactionController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Controllers\Terms_ConditionController.cs" />
     <Compile Include="Controllers\VAT_CodeController.cs" />
@@ -189,6 +192,11 @@
       <DependentUpon>PCS_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PCS_DB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PCS_DB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PCS_DB1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PCS_DB.edmx</DependentUpon>
@@ -245,7 +253,16 @@
     <Compile Include="ViewModel\PurchaseOrder_VM.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\.idea\blade.xml" />
+    <Content Include="Content\.idea\modules.xml" />
+    <Content Include="Content\.idea\workspace.xml" />
+    <Content Include="Content\assets\css\bootstrap.css" />
+    <Content Include="Content\assets\css\style.css" />
+    <Content Include="Content\assets\fonts\css\font-awesome.css" />
+    <Content Include="Content\assets\fonts\css\font-awesome.min.css" />
+    <Content Include="Content\assets\fonts\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\assets\fonts\HELP-US-OUT.txt" />
+    <Content Include="Content\assets\js\external.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -263,10 +280,45 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\PCS_DB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PCS_DB1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Models\PCS_DB.edmx.diagram">
       <DependentUpon>PCS_DB.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\assets\fonts\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\assets\fonts\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\assets\fonts\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\assets\fonts\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\assets\fonts\fonts\FontAwesome.otf" />
+    <Content Include="Content\assets\fonts\less\animated.less" />
+    <Content Include="Content\assets\fonts\less\bordered-pulled.less" />
+    <Content Include="Content\assets\fonts\less\core.less" />
+    <Content Include="Content\assets\fonts\less\fixed-width.less" />
+    <Content Include="Content\assets\fonts\less\font-awesome.less" />
+    <Content Include="Content\assets\fonts\less\icons.less" />
+    <Content Include="Content\assets\fonts\less\larger.less" />
+    <Content Include="Content\assets\fonts\less\list.less" />
+    <Content Include="Content\assets\fonts\less\mixins.less" />
+    <Content Include="Content\assets\fonts\less\path.less" />
+    <Content Include="Content\assets\fonts\less\rotated-flipped.less" />
+    <Content Include="Content\assets\fonts\less\screen-reader.less" />
+    <Content Include="Content\assets\fonts\less\stacked.less" />
+    <Content Include="Content\assets\fonts\less\variables.less" />
+    <Content Include="Content\assets\fonts\scss\font-awesome.scss" />
+    <Content Include="Content\assets\fonts\scss\_animated.scss" />
+    <Content Include="Content\assets\fonts\scss\_bordered-pulled.scss" />
+    <Content Include="Content\assets\fonts\scss\_core.scss" />
+    <Content Include="Content\assets\fonts\scss\_fixed-width.scss" />
+    <Content Include="Content\assets\fonts\scss\_icons.scss" />
+    <Content Include="Content\assets\fonts\scss\_larger.scss" />
+    <Content Include="Content\assets\fonts\scss\_list.scss" />
+    <Content Include="Content\assets\fonts\scss\_mixins.scss" />
+    <Content Include="Content\assets\fonts\scss\_path.scss" />
+    <Content Include="Content\assets\fonts\scss\_rotated-flipped.scss" />
+    <Content Include="Content\assets\fonts\scss\_screen-reader.scss" />
+    <Content Include="Content\assets\fonts\scss\_stacked.scss" />
+    <Content Include="Content\assets\fonts\scss\_variables.scss" />
+    <Content Include="Content\.idea\POS.iml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -342,10 +394,22 @@
     <Content Include="Views\Suppliers\Details.cshtml" />
     <Content Include="Views\Suppliers\Edit.cshtml" />
     <Content Include="Views\Suppliers\Index.cshtml" />
+    <Content Include="Views\Purchase_Header\Create.cshtml" />
+    <Content Include="Views\Purchase_Header\Delete.cshtml" />
+    <Content Include="Views\Purchase_Header\Details.cshtml" />
+    <Content Include="Views\Purchase_Header\Edit.cshtml" />
+    <Content Include="Views\Purchase_Header\Index.cshtml" />
+    <Content Include="Views\Purchase_Transaction\Create.cshtml" />
+    <Content Include="Views\Purchase_Transaction\Delete.cshtml" />
+    <Content Include="Views\Purchase_Transaction\Details.cshtml" />
+    <Content Include="Views\Purchase_Transaction\Edit.cshtml" />
+    <Content Include="Views\Purchase_Transaction\Index.cshtml" />
+    <Content Include="Views\PurchaseOrder\CreatePurchaseOrder.cshtml" />
+    <Content Include="Views\Shared\_head.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Shared\" />
+    <Folder Include="Content\assets\images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
