@@ -1,0 +1,155 @@
+﻿@model PurchaseControlSystem.ViewModel.PurchaseOrder_VM
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>PurchaseOrder_VM</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CostCenterId_FK)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CostCenterId_FK)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AccountId_FK)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AccountId_FK)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DepartmentId_FK)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DepartmentId_FK)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SupplierName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SupplierName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SupplierAddress)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SupplierAddress)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Comments)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Comments)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductId_FK)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ProductId_FK)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ProductName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.UnitPrice)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.UnitPrice)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Quantity)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PackSize)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PackSize)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.GrossValue)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.GrossValue)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TermsCode)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TermsCode)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Suffix)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Suffix)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.LpoStatus)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.LpoStatus)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        @Html.ActionLink("Approve", "Approve", new {  id = Model.OrderNo }) 
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

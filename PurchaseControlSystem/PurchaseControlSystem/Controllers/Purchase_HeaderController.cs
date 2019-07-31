@@ -1,6 +1,7 @@
 ﻿using PurchaseControlSystem.Models;
 using System;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -50,26 +51,34 @@ namespace PurchaseControlSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                //var PH = db.Set<Purchase_Header>();
+                //PH.Add(new Purchase_Header
+                //{
+                //    CostCenterId_FK = purchase_Header.CostCenterId_FK,
+                //    AccountId_FK = purchase_Header.AccountId_FK,
+                //    DepartmentId_FK = purchase_Header.DepartmentId_FK,
+                //    Status = purchase_Header.Status,
+                //    SupplierName = purchase_Header.SupplierName,
+                //    SupplierAddress = purchase_Header.SupplierAddress,
+                //    Comments = purchase_Header.Comments,
+                //    CreatedBy = "Hamza",
+                //    CreatedDate = DateTime.Now
+                //});
+                var orderNumber = db.Database.SqlQuery<int>(@"insert into Purchase_Header (CostCenterId_FK, AccountId_FK, DepartmentId_FK, Status, SupplierName, SupplierAddress, CreatedBy, CreatedDate, Comments) values ('" + @purchase_Header.CostCenterId_FK + "', '" + @purchase_Header.AccountId_FK + "', '" + @purchase_Header.DepartmentId_FK + "', '" + @purchase_Header.Status + "', '" + @purchase_Header.SupplierName + "', '" + @purchase_Header.SupplierAddress + "' , '" + "Ashok"+ "' , '" + DateTime.Now + "' , '" + @purchase_Header.Comments + "'); SELECT CAST(SCOPE_IDENTITY() AS INT)").Single();
 
-                var PH = db.Set<Purchase_Header>();
-                PH.Add(new Purchase_Header
-                {
-                    CostCenterId_FK = purchase_Header.CostCenterId_FK,
-                    AccountId_FK = purchase_Header.AccountId_FK,
-                    DepartmentId_FK = purchase_Header.DepartmentId_FK,
-                    Status = purchase_Header.Status,
-                    SupplierName = purchase_Header.SupplierName,
-                    SupplierAddress = purchase_Header.SupplierAddress,
-                    Comments = purchase_Header.Comments,
-                    CreatedBy = "Hamza",
-                    CreatedDate = DateTime.Now
-                });
 
+
+                //= db.Database. SqlQuery("select OrderNo from Purchase_Header where OrderNo = identity");
                 db.SaveChanges();
 
+                Session["OrderNo"] = Convert.ToInt32(orderNumber);
+                Session["CostCentreId"] = Convert.ToInt32(purchase_Header.CostCenterId_FK);
+                Session["AccountId"] = Convert.ToString(purchase_Header.AccountId_FK);
+                //Session["CostCenterId_FK"] = purchase_Header.CostCenterId_FK;
+                //Session["AccountId_FK"] = purchase_Header.AccountId_FK;
                 //db.Purchase_Header.Add(purchase_Header);
                 //db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Purchase_Transaction");
             }
 
             ViewBag.CostCenterId_FK = new SelectList(db.Cost_Center, "CostCenterId", "CostCenterId", purchase_Header.CostCenterId_FK);

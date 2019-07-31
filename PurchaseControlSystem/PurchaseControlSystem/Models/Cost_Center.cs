@@ -26,11 +26,11 @@ public partial class Cost_Center
 
         this.Locations = new HashSet<Location>();
 
+        this.Purchase_Header = new HashSet<Purchase_Header>();
+
         this.Users = new HashSet<User>();
 
         this.Verified_Transaction = new HashSet<Verified_Transaction>();
-
-        this.Purchase_Header = new HashSet<Purchase_Header>();
 
         this.Purchase_Transaction = new HashSet<Purchase_Transaction>();
 
@@ -61,15 +61,15 @@ public partial class Cost_Center
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
+    public virtual ICollection<Purchase_Header> Purchase_Header { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
     public virtual ICollection<User> Users { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<Verified_Transaction> Verified_Transaction { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<Purchase_Header> Purchase_Header { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 

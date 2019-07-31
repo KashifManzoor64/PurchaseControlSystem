@@ -48,7 +48,7 @@ namespace PurchaseControlSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,ProductName,TermsCode,ItemCategoryId_FK,ProductType,PackSize")] Product product)
+        public ActionResult Create([Bind(Include = "ProductId,ProductName,UnitPrice,Suffix,TermsCode,ItemCategoryId_FK,ProductType,PackSize")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace PurchaseControlSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,ProductName,TermsCode,ItemCategoryId_FK,ProductType,PackSize")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductId,ProductName,UnitPrice,Suffix,TermsCode,ItemCategoryId_FK,ProductType,PackSize")] Product product)
         {
             if (ModelState.IsValid)
             {

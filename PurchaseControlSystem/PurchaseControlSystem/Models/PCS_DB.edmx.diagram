@@ -15,7 +15,6 @@
         <EntityTypeShape EntityType="PCS_Model.Item_Category" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PCS_Model.Location" Width="1.5" PointX="7.5" PointY="24.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PCS_Model.MRC" Width="1.5" PointX="5.25" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PCS_Model.Product" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="PCS_Model.Suffix" Width="1.5" PointX="3" PointY="25.125" IsExpanded="true" />
         <EntityTypeShape EntityType="PCS_Model.Supplier" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PCS_Model.Supplier_Addition" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
@@ -23,48 +22,47 @@
         <EntityTypeShape EntityType="PCS_Model.Supplier_SLA" Width="1.5" PointX="5.25" PointY="17.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PCS_Model.Team" Width="1.5" PointX="7.5" PointY="27.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PCS_Model.Terms_Condition" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PCS_Model.User" Width="1.5" PointX="9.75" PointY="20.125" IsExpanded="true" />
         <EntityTypeShape EntityType="PCS_Model.User_Authorise" Width="1.5" PointX="12" PointY="19.875" IsExpanded="true" />
         <EntityTypeShape EntityType="PCS_Model.User_Setup" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PCS_Model.VAT_Code" Width="1.5" PointX="0.75" PointY="16.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PCS_Model.VAT_Group" Width="1.5" PointX="0.75" PointY="23.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PCS_Model.Verified_Transaction" Width="1.5" PointX="12.75" PointY="13.5" IsExpanded="true" />
         <AssociationConnector Association="PCS_Model.FK_Accounts_Cost_Center" ManuallyRouted="false" />
         <AssociationConnector Association="PCS_Model.FK_Accounts_Expense" ManuallyRouted="false" />
         <AssociationConnector Association="PCS_Model.FK_Cost_Center_Department" ManuallyRouted="false" />
         <AssociationConnector Association="PCS_Model.FK_Cost_Center_Division" ManuallyRouted="false" />
         <AssociationConnector Association="PCS_Model.FK_Location_Cost_Center" ManuallyRouted="false" />
-        <AssociationConnector Association="PCS_Model.FK_User_Cost_Center" ManuallyRouted="false" />
-        <AssociationConnector Association="PCS_Model.FK_Verified_Transaction_Cost_Center" ManuallyRouted="false" />
         <AssociationConnector Association="PCS_Model.FK_Department_Division" ManuallyRouted="false" />
-        <AssociationConnector Association="PCS_Model.FK_User_Department" ManuallyRouted="false" />
         <AssociationConnector Association="PCS_Model.FK_Suffix_Division" ManuallyRouted="false" />
         <AssociationConnector Association="PCS_Model.FK_Supplier_Division" ManuallyRouted="false" />
         <AssociationConnector Association="PCS_Model.FK_Supplier_Exchange_Rate" ManuallyRouted="false" />
         <AssociationConnector Association="PCS_Model.FK_Expense_Category_Expense" ManuallyRouted="false" />
         <AssociationConnector Association="PCS_Model.FK_Expense_Category_Item_Category" ManuallyRouted="false" />
-        <AssociationConnector Association="PCS_Model.FK_Products_Item_Category" ManuallyRouted="false" />
-        <AssociationConnector Association="PCS_Model.FK_User_Location" ManuallyRouted="false" />
-        <AssociationConnector Association="PCS_Model.FK_MRC_Products" ManuallyRouted="false" />
         <AssociationConnector Association="PCS_Model.FK_MRC_Supplier" ManuallyRouted="false" />
         <AssociationConnector Association="PCS_Model.FK_Supplier_SLA_Supplier" ManuallyRouted="false" />
         <AssociationConnector Association="PCS_Model.FK_Supplier_Supplier" ManuallyRouted="false" />
         <AssociationConnector Association="PCS_Model.FK_Supplier_VAT_Group" ManuallyRouted="false" />
-        <AssociationConnector Association="PCS_Model.FK_Verified_Transaction_Verified_Transaction" ManuallyRouted="false" />
-        <AssociationConnector Association="PCS_Model.FK_User_Teams" ManuallyRouted="false" />
-        <AssociationConnector Association="PCS_Model.FK_User_Authorise_User" ManuallyRouted="false" />
         <EntityTypeShape EntityType="PCS_Model.Purchase_Header" Width="1.5" PointX="9" PointY="14.5" />
         <AssociationConnector Association="PCS_Model.FK_Purchase_Header_Cost_Center" />
         <AssociationConnector Association="PCS_Model.FK_Purchase_Header_Department" />
         <AssociationConnector Association="PCS_Model.FK_Purchase_Header_Supplier" />
+        <EntityTypeShape EntityType="PCS_Model.User" Width="1.5" PointX="9.75" PointY="21.375" />
+        <AssociationConnector Association="PCS_Model.FK_User_Cost_Center" />
+        <AssociationConnector Association="PCS_Model.FK_User_Department" />
+        <AssociationConnector Association="PCS_Model.FK_User_Location" />
+        <AssociationConnector Association="PCS_Model.FK_User_Teams" />
+        <AssociationConnector Association="PCS_Model.FK_User_Authorise_User" />
+        <EntityTypeShape EntityType="PCS_Model.Verified_Transaction" Width="1.5" PointX="11.25" PointY="13.5" />
+        <AssociationConnector Association="PCS_Model.FK_Verified_Transaction_Cost_Center" />
         <AssociationConnector Association="PCS_Model.FK_Verified_Transaction_Purchase_Header" />
-        <EntityTypeShape EntityType="PCS_Model.Purchase_Transaction" Width="1.5" PointX="15.25" PointY="14.875" />
+        <AssociationConnector Association="PCS_Model.FK_Verified_Transaction_Verified_Transaction" />
+        <EntityTypeShape EntityType="PCS_Model.Product" Width="1.5" PointX="3" PointY="9" />
+        <AssociationConnector Association="PCS_Model.FK_Products_Item_Category" />
+        <AssociationConnector Association="PCS_Model.FK_MRC_Products" />
+        <EntityTypeShape EntityType="PCS_Model.Purchase_Transaction" Width="1.5" PointX="14.25" PointY="13" />
         <AssociationConnector Association="PCS_Model.FK_Purchase_Transaction_Cost_Center" />
-        <AssociationConnector Association="PCS_Model.FK_Purchase_Transaction_Item_Category" />
         <AssociationConnector Association="PCS_Model.FK_Purchase_Transaction_Products" />
         <AssociationConnector Association="PCS_Model.FK_Purchase_Transaction_Purchase_Header" />
-        <AssociationConnector Association="PCS_Model.FK_Purchase_Transaction_Purchase_Transaction" />
-        <AssociationConnector Association="PCS_Model.FK_Purchase_Transaction_Suffix" />
+        <AssociationConnector Association="PCS_Model.FK_Purchase_Transaction_Supplier" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

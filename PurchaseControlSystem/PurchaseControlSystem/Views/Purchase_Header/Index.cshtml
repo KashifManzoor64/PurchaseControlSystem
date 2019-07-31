@@ -15,6 +15,7 @@
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
+    <h2>@TempData["OrderNo"]</h2>
     <table class="table">
         <tr>
             <th>
@@ -38,7 +39,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.AmendedDate)
             </th>
-           
+
             <th>
                 @Html.DisplayNameFor(model => model.InitalsBy)
             </th>
@@ -81,7 +82,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.AmendedDate)
                 </td>
-                
+
                 <td>
                     @Html.DisplayFor(modelItem => item.InitalsBy)
                 </td>
@@ -100,7 +101,7 @@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.OrderNo }) |
                     @*@Html.ActionLink("Details", "Details", new { id=item.OrderNo })
-                      @Html.ActionLink("Delete", "Delete", new { id=item.OrderNo })|*@
+                        @Html.ActionLink("Delete", "Delete", new { id=item.OrderNo })|*@
                 </td>
             </tr>
         }

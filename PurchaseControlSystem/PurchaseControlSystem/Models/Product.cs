@@ -33,6 +33,10 @@ public partial class Product
 
     public string ProductName { get; set; }
 
+    public decimal UnitPrice { get; set; }
+
+    public int Suffix { get; set; }
+
     public string TermsCode { get; set; }
 
     public int ItemCategoryId_FK { get; set; }

@@ -43,21 +43,21 @@ public partial class User
 
     public string Email { get; set; }
 
-    public int Phone { get; set; }
+    public Nullable<int> Phone { get; set; }
 
-    public int Role { get; set; }
+    public Nullable<int> Role { get; set; }
 
     public string PrintFormat { get; set; }
 
-    public int DivisionAccess { get; set; }
+    public Nullable<int> DivisionAccess { get; set; }
 
-    public int Grade { get; set; }
+    public Nullable<int> Grade { get; set; }
 
-    public bool OperationsApprover { get; set; }
+    public Nullable<bool> OperationsApprover { get; set; }
 
-    public bool FinanceApprover { get; set; }
+    public Nullable<bool> FinanceApprover { get; set; }
 
-    public bool VendModAccess { get; set; }
+    public Nullable<bool> VendModAccess { get; set; }
 
     public string Signature { get; set; }
 
@@ -67,15 +67,15 @@ public partial class User
 
     public string Out_Of_Office { get; set; }
 
-    public System.DateTime StartDate { get; set; }
+    public Nullable<System.DateTime> StartDate { get; set; }
 
-    public System.DateTime EndDate { get; set; }
+    public Nullable<System.DateTime> EndDate { get; set; }
 
-    public System.DateTime Comments { get; set; }
+    public Nullable<System.DateTime> Comments { get; set; }
 
     public string Location_FK { get; set; }
 
-    public int Terminal { get; set; }
+    public Nullable<int> Terminal { get; set; }
 
 
 

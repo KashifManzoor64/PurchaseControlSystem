@@ -1,12 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace PurchaseControlSystem.ViewModel
 {
     public class PurchaseOrder_VM
     {
+        public PurchaseOrder_VM()
+        {
+
+        }
+        public int OrderNo { get; set; }
 
         public int CostCenterId_FK { get; set; }
 
@@ -30,17 +37,23 @@ namespace PurchaseControlSystem.ViewModel
 
         public Nullable<decimal> UnitPrice { get; set; }
 
-        public decimal Quantity { get; set; }
+        public Nullable<decimal> Quantity { get; set; }
 
-        public int PackSize { get; set; }
+        public Nullable<int> PackSize { get; set; }
 
         public Nullable<decimal> GrossValue { get; set; }
         
         public int TermsCode { get; set; }        
 
-        public int Suffix_FK { get; set; }
+        public int Suffix { get; set; }
 
         public string LpoStatus { get; set; }
+
+
+        public IEnumerable<SelectListItem> ApproverName { get; set; }
+
+
+        //public SelectList UserId { get; set; }
 
     }
 }

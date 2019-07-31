@@ -24,9 +24,9 @@ public partial class Department
 
         this.Cost_Center = new HashSet<Cost_Center>();
 
-        this.Users = new HashSet<User>();
-
         this.Purchase_Header = new HashSet<Purchase_Header>();
+
+        this.Users = new HashSet<User>();
 
     }
 
@@ -47,11 +47,11 @@ public partial class Department
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<User> Users { get; set; }
+    public virtual ICollection<Purchase_Header> Purchase_Header { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<Purchase_Header> Purchase_Header { get; set; }
+    public virtual ICollection<User> Users { get; set; }
 
 }
 

@@ -26,8 +26,6 @@ public partial class Item_Category
 
         this.Products = new HashSet<Product>();
 
-        this.Purchase_Transaction = new HashSet<Purchase_Transaction>();
-
     }
 
 
@@ -44,10 +42,6 @@ public partial class Item_Category
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<Product> Products { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<Purchase_Transaction> Purchase_Transaction { get; set; }
 
 }
 

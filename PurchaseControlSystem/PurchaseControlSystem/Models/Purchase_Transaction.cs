@@ -22,9 +22,11 @@ public partial class Purchase_Transaction
 
     public int OrderNo_FK { get; set; }
 
+    public int ProductId_FK { get; set; }
+
     public int CostCenterId_FK { get; set; }
 
-    public int ProductId_FK { get; set; }
+    public string AccountId_FK { get; set; }
 
     public string ProductName { get; set; }
 
@@ -44,17 +46,15 @@ public partial class Purchase_Transaction
 
     public Nullable<System.DateTime> VarifiedDate { get; set; }
 
-    public int ItemCategoryId_FK { get; set; }
-
     public int TermsCode { get; set; }
-
-    public string AccountId_FK { get; set; }
 
     public string TermsPrinted { get; set; }
 
-    public int Suffix_FK { get; set; }
+    public int Suffix { get; set; }
 
     public string LpoStatus { get; set; }
+
+    public int ApproverId { get; set; }
 
     public string FinanceApproved { get; set; }
 
@@ -72,15 +72,11 @@ public partial class Purchase_Transaction
 
     public virtual Cost_Center Cost_Center { get; set; }
 
-    public virtual Item_Category Item_Category { get; set; }
-
     public virtual Product Product { get; set; }
 
     public virtual Purchase_Header Purchase_Header { get; set; }
 
     public virtual Supplier Supplier { get; set; }
-
-    public virtual Suffix Suffix { get; set; }
 
 }
 

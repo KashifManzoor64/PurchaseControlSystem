@@ -58,9 +58,9 @@ public partial class Verified_Transaction
 
     public virtual Cost_Center Cost_Center { get; set; }
 
-    public virtual Supplier Supplier { get; set; }
-
     public virtual Purchase_Header Purchase_Header { get; set; }
+
+    public virtual Supplier Supplier { get; set; }
 
 }
 

@@ -1,0 +1,120 @@
+﻿@model IEnumerable<PurchaseControlSystem.Models.Purchase_Header>
+
+
+@{
+    Layout = "~/Views/Shared/_head.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>POS</title>
+    <!-- Bootstrap CSS -->
+    @*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,300italic,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,300italic,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="assets/fonts/css/font-awesome.min.css">
+    <link href="~/Content/assets/fonts/css/font-awesome.min.css" rel="stylesheet" />*@
+
+    <style type="text/css">
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    
+    <table class="table table-bordered" style="border:1px solid; border-collapse:collapse;">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Supplier.AccountId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupplierName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department.Department_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cost_Center.CostCenterId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>         
+            <th>
+                @Html.DisplayNameFor(model => model.Purchase_Transaction)
+            </th>         
+            
+            <th>
+                @Html.DisplayName("Amount (CUR)")
+            </th>
+            <th>
+                @Html.DisplayName("Exchange Rate")
+            </th>
+            <th>
+                @Html.DisplayName("Amount (CUR)")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Supplier.AccountId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupplierName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.Department_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost_Center.CostCenterId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+
+            <td>
+                @*  @Html.ActionLink("Edit", "Edit", new { id=item.OrderNo }) |*@
+                @Html.ActionLink("View", "Details", new { id = item.OrderNo })
+                @*@Html.ActionLink("Delete", "Delete", new { id=item.OrderNo })*@
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

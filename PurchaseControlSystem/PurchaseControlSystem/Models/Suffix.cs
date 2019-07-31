@@ -18,15 +18,6 @@ using System;
 public partial class Suffix
 {
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Suffix()
-    {
-
-        this.Purchase_Transaction = new HashSet<Purchase_Transaction>();
-
-    }
-
-
     public int Suffix_Id { get; set; }
 
     public string Suffix1 { get; set; }
@@ -40,10 +31,6 @@ public partial class Suffix
 
 
     public virtual Division Division { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<Purchase_Transaction> Purchase_Transaction { get; set; }
 
 }
 

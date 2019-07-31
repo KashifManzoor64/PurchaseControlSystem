@@ -52,8 +52,6 @@ public partial class Purchase_Control_SystemEntities : DbContext
 
     public virtual DbSet<MRC> MRCs { get; set; }
 
-    public virtual DbSet<Product> Products { get; set; }
-
     public virtual DbSet<Suffix> Suffixes { get; set; }
 
     public virtual DbSet<Supplier> Suppliers { get; set; }
@@ -68,8 +66,6 @@ public partial class Purchase_Control_SystemEntities : DbContext
 
     public virtual DbSet<Terms_Condition> Terms_Condition { get; set; }
 
-    public virtual DbSet<User> Users { get; set; }
-
     public virtual DbSet<User_Authorise> User_Authorise { get; set; }
 
     public virtual DbSet<User_Setup> User_Setup { get; set; }
@@ -78,9 +74,13 @@ public partial class Purchase_Control_SystemEntities : DbContext
 
     public virtual DbSet<VAT_Group> VAT_Group { get; set; }
 
+    public virtual DbSet<Purchase_Header> Purchase_Header { get; set; }
+
+    public virtual DbSet<User> Users { get; set; }
+
     public virtual DbSet<Verified_Transaction> Verified_Transaction { get; set; }
 
-    public virtual DbSet<Purchase_Header> Purchase_Header { get; set; }
+    public virtual DbSet<Product> Products { get; set; }
 
     public virtual DbSet<Purchase_Transaction> Purchase_Transaction { get; set; }
 

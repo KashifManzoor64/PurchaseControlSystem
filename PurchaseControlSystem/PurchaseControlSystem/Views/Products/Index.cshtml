@@ -21,6 +21,12 @@
                 @Html.DisplayNameFor(model => model.ProductName)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.UnitPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Suffix)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.TermsCode)
             </th>
             <th>
@@ -39,6 +45,12 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Suffix)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TermsCode)
