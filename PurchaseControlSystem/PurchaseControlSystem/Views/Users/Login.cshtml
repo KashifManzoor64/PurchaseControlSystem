@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_head.cshtml";
+}
+@model PurchaseControlSystem.Models.User
+<section class="light-bg py-5 min-vh-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 my-5">
+            </div>
+            <div class="col-lg-4 col-md-6 col-11 box mb-5 px-0 mx-auto rounded bg-white">
+                <div class="px-md-4 py-md-3">
+                    @Html.BeginForm("Login", "Users", FormMethod.Post)
+                    {
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <h5 class="text-center orang-text font-weight-normal py-3 font-weight-bold get-new mb-0">Sign In</h5>
+                        </div>
+                        <div class="col-12 input-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text px-0 text-center fa-width"> <i class="fa fa-envelope w-100 text-center primary-text font"></i> </span>
+                            </div>
+                            @Html.TextBoxFor(model => model.Username, new { @class = "form-control font" })
+                            @*<input name="email" value="" class="form-control font" placeholder="Email" type="email" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}">*@
+                        </div>
+                        <div class="col-12 input-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text px-0 text-center fa-width"> <i class="fa fa-lock w-100 text-center primary-text"></i> </span>
+                            </div>
+                            @Html.TextBoxFor(model => model.Password, new  { @class = "form-control font" , @type = "password" })
+                            @*<input name="password" class="form-control font" placeholder="Password" type="password">*@
+                        </div>
+                        @*<div class="w-100 d-block mb-2 px-3">
+                            <div class="d-inline-block rounded primary-text py-1 w-50">
+                                <label class="w-100 pt-2 mb-0 font checkbox-bootstrap">
+                                    <input type="checkbox">
+                                    <span class="font checkmark"></span>
+                                    Remember me
+                                </label>
+                                <!--<span class="font">Remember me</span>-->
+                            </div>
+                            <div class="d-inline-block rounded primary-text py-1 w-50 text-right">
+                                <a href="#" class="primary-text px-2 py-1 w-100 font" target="_blank">Forgot Password</a>
+                            </div>
+                        </div>*@
+                        <div class="col-12 form-group text-right">
+                            <button type="submit" class="btn primary-bg mx-auto @*text-white*@ font px-4 w-100 font-weight-bold">Sign In</button>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

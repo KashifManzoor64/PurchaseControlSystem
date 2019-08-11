@@ -24,11 +24,11 @@ public partial class Supplier
 
         this.MRCs = new HashSet<MRC>();
 
-        this.Supplier_SLA = new HashSet<Supplier_SLA>();
-
         this.Purchase_Header = new HashSet<Purchase_Header>();
 
         this.Verified_Transaction = new HashSet<Verified_Transaction>();
+
+        this.Supplier_SLA = new HashSet<Supplier_SLA>();
 
         this.Purchase_Transaction = new HashSet<Purchase_Transaction>();
 
@@ -81,10 +81,6 @@ public partial class Supplier
 
     public virtual ICollection<MRC> MRCs { get; set; }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<Supplier_SLA> Supplier_SLA { get; set; }
-
     public virtual VAT_Code VAT_Code { get; set; }
 
     public virtual VAT_Group VAT_Group { get; set; }
@@ -96,6 +92,10 @@ public partial class Supplier
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<Verified_Transaction> Verified_Transaction { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<Supplier_SLA> Supplier_SLA { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 

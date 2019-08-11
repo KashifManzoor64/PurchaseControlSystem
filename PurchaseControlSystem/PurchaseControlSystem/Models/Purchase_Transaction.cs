@@ -34,6 +34,8 @@ public partial class Purchase_Transaction
 
     public Nullable<decimal> Quantity { get; set; }
 
+    public Nullable<decimal> ExchangeRate { get; set; }
+
     public Nullable<int> PackSize { get; set; }
 
     public Nullable<decimal> GrossValue { get; set; }
@@ -46,7 +48,7 @@ public partial class Purchase_Transaction
 
     public Nullable<System.DateTime> VarifiedDate { get; set; }
 
-    public int TermsCode { get; set; }
+    public string TermsCode { get; set; }
 
     public string TermsPrinted { get; set; }
 

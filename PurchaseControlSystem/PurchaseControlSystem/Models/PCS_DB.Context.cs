@@ -60,8 +60,6 @@ public partial class Purchase_Control_SystemEntities : DbContext
 
     public virtual DbSet<Supplier_Quotes> Supplier_Quotes { get; set; }
 
-    public virtual DbSet<Supplier_SLA> Supplier_SLA { get; set; }
-
     public virtual DbSet<Team> Teams { get; set; }
 
     public virtual DbSet<Terms_Condition> Terms_Condition { get; set; }
@@ -81,6 +79,8 @@ public partial class Purchase_Control_SystemEntities : DbContext
     public virtual DbSet<Verified_Transaction> Verified_Transaction { get; set; }
 
     public virtual DbSet<Product> Products { get; set; }
+
+    public virtual DbSet<Supplier_SLA> Supplier_SLA { get; set; }
 
     public virtual DbSet<Purchase_Transaction> Purchase_Transaction { get; set; }
 

@@ -140,12 +140,15 @@
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\DivisionsController.cs" />
     <Compile Include="Controllers\Exchange_RateController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Item_CategoryController.cs" />
+    <Compile Include="Controllers\MRCsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\PurchaseOrderController.cs" />
     <Compile Include="Controllers\Purchase_HeaderController.cs" />
     <Compile Include="Controllers\Purchase_TransactionController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
+    <Compile Include="Controllers\Supplier_SLAController.cs" />
     <Compile Include="Controllers\Terms_ConditionController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\VAT_CodeController.cs" />
@@ -252,6 +255,7 @@
       <DependentUpon>PCS_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\Terms_Condition_VM.cs" />
     <Compile Include="ViewModel\PurchaseOrder_VM.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -260,6 +264,7 @@
     <Content Include="Content\.idea\workspace.xml" />
     <Content Include="Content\assets\css\bootstrap.css" />
     <Content Include="Content\assets\css\style.css" />
+    <Content Include="Content\assets\css\style4.css" />
     <Content Include="Content\assets\fonts\css\font-awesome.css" />
     <Content Include="Content\assets\fonts\css\font-awesome.min.css" />
     <Content Include="Content\assets\fonts\fonts\fontawesome-webfont.svg" />
@@ -274,6 +279,8 @@
     <Content Include="Content\assets\js\jquery-3.3.1.slim.js" />
     <Content Include="Content\assets\js\jquery-3.3.1.slim.min.js" />
     <None Include="Content\assets\js\jquery.validate-vsdoc.js" />
+    <Content Include="Content\assets\js\jquery-ui.js" />
+    <Content Include="Content\assets\js\jquery.ajax.min.js" />
     <Content Include="Content\assets\js\jquery.validate.js" />
     <Content Include="Content\assets\js\jquery.validate.min.js" />
     <Content Include="Content\assets\js\jquery.validate.unobtrusive.js" />
@@ -293,8 +300,6 @@
       <DependentUpon>PCS_DB.edmx</DependentUpon>
       <LastGenOutput>PCS_DB.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\PCS_DB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PCS_DB1.Designer.cs</LastGenOutput>
@@ -338,17 +343,6 @@
     <Content Include="Content\.idea\POS.iml" />
     <Content Include="Content\assets\js\jquery-3.3.1.min.map" />
     <Content Include="Content\assets\js\jquery-3.3.1.slim.min.map" />
-    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.3.1.js" />
-    <Content Include="Scripts\jquery-3.3.1.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -432,14 +426,26 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\SignUp.cshtml" />
     <Content Include="Views\PurchaseOrder\Index.cshtml" />
-    <Content Include="Views\PurchaseOrder\CreateTest.cshtml" />
-    <Content Include="Views\Approve\Index.cshtml" />
-    <Content Include="Views\PurchaseOrder\Make.cshtml" />
     <Content Include="Views\Approve\Details.cshtml" />
+    <Content Include="Views\Approve\Index.cshtml" />
+    <Content Include="Views\Supplier_SLA\Create.cshtml" />
+    <Content Include="Views\Supplier_SLA\Delete.cshtml" />
+    <Content Include="Views\Supplier_SLA\Details.cshtml" />
+    <Content Include="Views\Supplier_SLA\Edit.cshtml" />
+    <Content Include="Views\Supplier_SLA\Index.cshtml" />
+    <Content Include="Views\Users\Login.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="Views\MRCs\Create.cshtml" />
+    <Content Include="Views\MRCs\Delete.cshtml" />
+    <Content Include="Views\MRCs\Details.cshtml" />
+    <Content Include="Views\MRCs\Edit.cshtml" />
+    <Content Include="Views\MRCs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\assets\images\" />
+    <Folder Include="Content\Supplier_Quote\" />
+    <Folder Include="Content\Supplier_SLA\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -447,8 +453,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

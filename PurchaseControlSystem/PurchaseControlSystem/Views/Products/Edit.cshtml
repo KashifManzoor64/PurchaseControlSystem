@@ -1,93 +1,96 @@
 ﻿@model PurchaseControlSystem.Models.Product
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_head.cshtml";
 }
+<section class="light-bg p-5 min-vh-100">
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col-md-5 mx-auto bg-white px-4 pt-4 pb-3 rounded">
+                <h5 class="mb-0 primary-bg text-white p-2 text-center mb-3 rounded">Product</h5>
+                @using (Html.BeginForm("Create", "Products", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
 
-<!DOCTYPE html>
+                    @Html.HiddenFor(model => model.ProductId)
+                    <div class="d-block my-2">
+                        <div class="d-inline-block rounded primary-bg text-white py-1 px-3 w-50">
+                            <span>Product Name</span>
+                        </div>
+                        <div class="d-inline-block w-50">
+                            @Html.TextBoxFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control font rounded w-100 input-height", @id = "ProductName" } })
+                            @*<input type="text" id="ProductName" class="form-control font rounded w-100 input-height">*@
+                        </div>
+                    </div>
+                    <div class="d-block my-2">
+                        <div class="d-inline-block rounded primary-bg text-white py-1 px-3 w-50">
+                            <span>Unit Price</span>
+                        </div>
+                        <div class="d-inline-block w-50">
+                            @Html.TextBoxFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control font rounded w-100 input-height" } })
+                            @*<input type="text" class="form-control font rounded w-100 input-height">*@
+                        </div>
+                    </div>
+                    <div class="d-block my-2">
+                        <div class="d-inline-block rounded primary-bg text-white py-1 px-3 w-50">
+                            <span>Suffix</span>
+                        </div>
+                        <div class="d-inline-block w-50">
+                            @Html.EditorFor(model => model.Suffix, new { htmlAttributes = new { @class = "form-control font rounded w-100 input-height" } })
+                            @*<input type="text" class="form-control font rounded w-100 input-height">*@
+                        </div>
+                    </div>
+                    <div class="d-block my-2">
+                        <div class="d-inline-block rounded primary-bg text-white py-1 px-3 w-50">
+                            <span>Terms Code</span>
+                        </div>
+                        <div class="d-inline-block w-50">
+                            @Html.EditorFor(model => model.TermsCode, new { htmlAttributes = new { @class = "form-control font rounded w-100 input-height" } })
+                            @*<input type="text" class="form-control font rounded w-100 input-height">*@
+                        </div>
+                    </div>
+                    <div class="d-block my-2">
+                        <div class="d-inline-block rounded primary-bg text-white py-1 px-3 w-50">
+                            <span>Item Category ID</span>
+                        </div>
+                        <div class="d-inline-block w-50">
+                            @Html.DropDownList("ItemCategoryId_FK", null, htmlAttributes: new { @class = "form-control font rounded w-100 input-height" })
+                            @*<input type="text" class="form-control font rounded w-100 input-height">*@
+                        </div>
+                    </div>
+                    <div class="d-block my-2">
+                        <div class="d-inline-block rounded primary-bg text-white py-1 px-3 w-50">
+                            <span>Product Type</span>
+                        </div>
+                        <div class="d-inline-block w-50">
+                            @Html.EditorFor(model => model.ProductType, new { htmlAttributes = new { @class = "form-control font rounded w-100 input-height" } })
+                            @*<input type="text" class="form-control font rounded w-100 input-height">*@
+                        </div>
+                    </div>
+                    <div class="d-block my-2">
+                        <div class="d-inline-block rounded primary-bg text-white py-1 px-3 w-50">
+                            <span>Pack Size</span>
+                        </div>
+                        <div class="d-inline-block w-50">
+                            @Html.EditorFor(model => model.PackSize, new { htmlAttributes = new { @class = "form-control font rounded w-100 input-height" } })
+                            @*<input type="text" class="form-control font rounded w-100 input-height">*@
+                        </div>
+                    </div>
+                    <div class="d-block my-2">
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
-</head>
-<body>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            <h4>Product</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.ProductId)
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.UnitPrice, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.Suffix, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Suffix, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Suffix, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.TermsCode, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.TermsCode, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.TermsCode, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.ItemCategoryId_FK, "ItemCategoryId_FK", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("ItemCategoryId_FK", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.ItemCategoryId_FK, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.ProductType, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ProductType, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ProductType, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.PackSize, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.PackSize, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.PackSize, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
+                        <div class="d-inline-block w-50">
+
+                            <input type="submit" value="Add Product" class="btn btn-info">
+                        </div>
+                    </div>
+                }
+                <div>
+                    @Html.ActionLink("Return Home", "Index")
                 </div>
             </div>
         </div>
-    }
-    
-    <div>
-        @Html.ActionLink("Back to List", "Index")
     </div>
-</body>
-</html>
+</section>
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@

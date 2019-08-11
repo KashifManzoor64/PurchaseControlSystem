@@ -29,6 +29,13 @@ namespace PurchaseControlSystem.ViewModel
 
         public string Comments { get; set; }
 
+        public string CreatedBy { get; set; }
+
+        public Nullable<DateTime> CreatedDate { get; set; }
+
+        public string DepartmentName { get; set; }
+
+
         //PUrchaseTransaction from here        
 
         public int ProductId_FK { get; set; }
@@ -43,9 +50,11 @@ namespace PurchaseControlSystem.ViewModel
 
         public Nullable<decimal> GrossValue { get; set; }
         
-        public int TermsCode { get; set; }        
+        public string TermsCode { get; set; }        
 
         public int Suffix { get; set; }
+
+        public Nullable<decimal> ExchangeRate { get; set; }
 
         public string LpoStatus { get; set; }
 

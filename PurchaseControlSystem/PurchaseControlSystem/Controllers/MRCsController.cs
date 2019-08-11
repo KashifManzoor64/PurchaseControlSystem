@@ -10,113 +10,116 @@ using PurchaseControlSystem.Models;
 
 namespace PurchaseControlSystem.Controllers
 {
-    public class ProductsController : Controller
+    public class MRCsController : Controller
     {
         private Purchase_Control_SystemEntities db = new Purchase_Control_SystemEntities();
 
-        // GET: Products
+        // GET: MRCs
         public ActionResult Index()
         {
-            var products = db.Products.Include(p => p.Item_Category);
-            return View(products.ToList());
+            var mRCs = db.MRCs.Include(m => m.Supplier).Include(m => m.Product);
+            return View(mRCs.ToList());
         }
 
-        // GET: Products/Details/5
+        // GET: MRCs/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            MRC mRC = db.MRCs.Find(id);
+            if (mRC == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(mRC);
         }
 
-        // GET: Products/Create
+        // GET: MRCs/Create
         public ActionResult Create()
         {
-            ViewBag.ItemCategoryId_FK = new SelectList(db.Item_Category, "ItemCategoryId", "Description");
+            ViewBag.AccountId_FK = new SelectList(db.Suppliers, "AccountId", "Short");
+            ViewBag.ProductId_FK = new SelectList(db.Products, "ProductId", "ProductName");
             return View();
         }
 
-        // POST: Products/Create
+        // POST: MRCs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(/*[Bind(Include = "ProductId,ProductName,UnitPrice,Suffix,TermsCode,ItemCategoryId_FK,ProductType,PackSize")]*/ Product product)
+        public ActionResult Create([Bind(Include = "MRC_Id,ProductId_FK,AccountId_FK,Description,Unit,Pack_Size,UnitRate,OtherCharges")] MRC mRC)
         {
             if (ModelState.IsValid)
             {
-                db.Products.Add(product);
+                db.MRCs.Add(mRC);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ItemCategoryId_FK = new SelectList(db.Item_Category, "ItemCategoryId", "Description", product.ItemCategoryId_FK);
-            return View(product);
+            ViewBag.AccountId_FK = new SelectList(db.Suppliers, "AccountId", "Short", mRC.AccountId_FK);
+            ViewBag.ProductId_FK = new SelectList(db.Products, "ProductId", "ProductName", mRC.ProductId_FK);
+            return View(mRC);
         }
 
-        // GET: Products/Edit/5
+        // GET: MRCs/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            MRC mRC = db.MRCs.Find(id);
+            if (mRC == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ItemCategoryId_FK = new SelectList(db.Item_Category, "ItemCategoryId", "Description", product.ItemCategoryId_FK);
-            return View(product);
+            ViewBag.AccountId_FK = new SelectList(db.Suppliers, "AccountId", "Short", mRC.AccountId_FK);
+            ViewBag.ProductId_FK = new SelectList(db.Products, "ProductId", "ProductName", mRC.ProductId_FK);
+            return View(mRC);
         }
 
-        // POST: Products/Edit/5
+        // POST: MRCs/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,ProductName,UnitPrice,Suffix,TermsCode,ItemCategoryId_FK,ProductType,PackSize")] Product product)
+        public ActionResult Edit([Bind(Include = "MRC_Id,ProductId_FK,AccountId_FK,Description,Unit,Pack_Size,UnitRate,OtherCharges")] MRC mRC)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
+                db.Entry(mRC).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ItemCategoryId_FK = new SelectList(db.Item_Category, "ItemCategoryId", "Description", product.ItemCategoryId_FK);
-            return View(product);
+            ViewBag.AccountId_FK = new SelectList(db.Suppliers, "AccountId", "Short", mRC.AccountId_FK);
+            ViewBag.ProductId_FK = new SelectList(db.Products, "ProductId", "ProductName", mRC.ProductId_FK);
+            return View(mRC);
         }
 
-        // GET: Products/Delete/5
+        // GET: MRCs/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            MRC mRC = db.MRCs.Find(id);
+            if (mRC == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(mRC);
         }
 
-        // POST: Products/Delete/5
+        // POST: MRCs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Product product = db.Products.Find(id);
-            db.Products.Remove(product);
+            MRC mRC = db.MRCs.Find(id);
+            db.MRCs.Remove(mRC);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

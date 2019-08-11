@@ -20,9 +20,11 @@ public partial class Supplier_SLA
 
     public int Supplier_SLAId { get; set; }
 
+    public string FileName { get; set; }
+
     public string AccountId_FK { get; set; }
 
-    public string SLA_Image { get; set; }
+    public string SLA { get; set; }
 
 
 

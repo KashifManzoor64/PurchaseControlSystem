@@ -1,0 +1,70 @@
+﻿@model IEnumerable<PurchaseControlSystem.Models.MRC>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_head.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Unit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pack_Size)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OtherCharges)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Supplier.Short)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.ProductName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Unit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pack_Size)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OtherCharges)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Supplier.Short)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.ProductName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MRC_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MRC_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MRC_Id })
+        </td>
+    </tr>
+}
+
+</table>

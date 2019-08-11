@@ -19,7 +19,6 @@
         <EntityTypeShape EntityType="PCS_Model.Supplier" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PCS_Model.Supplier_Addition" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PCS_Model.Supplier_Quotes" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PCS_Model.Supplier_SLA" Width="1.5" PointX="5.25" PointY="17.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PCS_Model.Team" Width="1.5" PointX="7.5" PointY="27.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PCS_Model.Terms_Condition" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PCS_Model.User_Authorise" Width="1.5" PointX="12" PointY="19.875" IsExpanded="true" />
@@ -38,7 +37,6 @@
         <AssociationConnector Association="PCS_Model.FK_Expense_Category_Expense" ManuallyRouted="false" />
         <AssociationConnector Association="PCS_Model.FK_Expense_Category_Item_Category" ManuallyRouted="false" />
         <AssociationConnector Association="PCS_Model.FK_MRC_Supplier" ManuallyRouted="false" />
-        <AssociationConnector Association="PCS_Model.FK_Supplier_SLA_Supplier" ManuallyRouted="false" />
         <AssociationConnector Association="PCS_Model.FK_Supplier_Supplier" ManuallyRouted="false" />
         <AssociationConnector Association="PCS_Model.FK_Supplier_VAT_Group" ManuallyRouted="false" />
         <EntityTypeShape EntityType="PCS_Model.Purchase_Header" Width="1.5" PointX="9" PointY="14.5" />
@@ -58,7 +56,9 @@
         <EntityTypeShape EntityType="PCS_Model.Product" Width="1.5" PointX="3" PointY="9" />
         <AssociationConnector Association="PCS_Model.FK_Products_Item_Category" />
         <AssociationConnector Association="PCS_Model.FK_MRC_Products" />
-        <EntityTypeShape EntityType="PCS_Model.Purchase_Transaction" Width="1.5" PointX="14.25" PointY="13" />
+        <EntityTypeShape EntityType="PCS_Model.Supplier_SLA" Width="1.5" PointX="5.25" PointY="9.75" />
+        <AssociationConnector Association="PCS_Model.FK_Supplier_SLA_Supplier" />
+        <EntityTypeShape EntityType="PCS_Model.Purchase_Transaction" Width="1.5" PointX="14.25" PointY="12.875" />
         <AssociationConnector Association="PCS_Model.FK_Purchase_Transaction_Cost_Center" />
         <AssociationConnector Association="PCS_Model.FK_Purchase_Transaction_Products" />
         <AssociationConnector Association="PCS_Model.FK_Purchase_Transaction_Purchase_Header" />

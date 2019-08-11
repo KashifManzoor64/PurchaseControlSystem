@@ -46,9 +46,6 @@ namespace PurchaseControlSystem.Controllers
             return View();
         }
 
-        // POST: Users/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "UserId,Username,Password,EmployeeNo,Name,DepartmentId_FK,CostCenter_FK,Email,Phone,Role,PrintFormat,DivisionAccess,Grade,OperationsApprover,FinanceApprover,VendModAccess,Signature,TeamApplicable,TeamId_FK,Out_Of_Office,StartDate,EndDate,Comments,Location_FK,Terminal")] User user)
@@ -131,6 +128,35 @@ namespace PurchaseControlSystem.Controllers
             db.Users.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View("Login");
+        }
+        [HttpPost]
+        public ActionResult Login(string username, string password)
+        {
+            var userauth = db.Users.Where(x => x.Username == username && x.Password == password).FirstOrDefault();
+            if (userauth == null)
+            {
+                return ViewBag.error = ("Invalid username or password");
+                // return View(u);
+                //return Content("no");
+            }
+            else
+            {
+                Session["userId"] = userauth.UserId;
+                Session["username"] = userauth.Username;
+                Session["financeApp"] = userauth.FinanceApprover;
+                Session["operationApp"] = userauth.OperationsApprover;
+                Session["grade"] = userauth.Grade;
+                Session["divAccess"] = userauth.DivisionAccess;
+                //return RedirectToAction("LogIn","Dashboard");
+                return RedirectToAction("Dashboard", "Home");
+            }
+
+            //return ();
         }
 
         protected override void Dispose(bool disposing)

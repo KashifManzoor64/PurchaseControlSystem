@@ -130,6 +130,7 @@
           <Property Name="Status" Type="nvarchar" MaxLength="50" />
           <Property Name="SupplierName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SupplierAddress" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Quote" Type="varchar" MaxLength="100" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="CreatedDate" Type="date" />
           <Property Name="AmendedBy" Type="nvarchar" MaxLength="50" />
@@ -149,13 +150,14 @@
           <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
           <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ExchangeRate" Type="decimal" Precision="18" Scale="4" />
           <Property Name="PackSize" Type="int" />
           <Property Name="GrossValue" Type="decimal" Precision="18" Scale="2" />
           <Property Name="ReceiveDate" Type="date" />
           <Property Name="ReceiveBy" Type="nvarchar" MaxLength="50" />
           <Property Name="VarifiedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="VarifiedDate" Type="date" />
-          <Property Name="TermsCode" Type="int" Nullable="false" />
+          <Property Name="TermsCode" Type="varchar" MaxLength="100" />
           <Property Name="TermsPrinted" Type="nvarchar" MaxLength="50" />
           <Property Name="Suffix" Type="int" Nullable="false" />
           <Property Name="LpoStatus" Type="nvarchar" MaxLength="50" />
@@ -228,8 +230,9 @@
             <PropertyRef Name="Supplier_SLAId" />
           </Key>
           <Property Name="Supplier_SLAId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="AccountId_FK" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="SLA_Image" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SLA" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Teams">
           <Key>
@@ -1070,12 +1073,12 @@
           <NavigationProperty Name="Division" Relationship="Self.FK_Supplier_Division" FromRole="Supplier" ToRole="Division" />
           <NavigationProperty Name="Exchange_Rate" Relationship="Self.FK_Supplier_Exchange_Rate" FromRole="Supplier" ToRole="Exchange_Rate" />
           <NavigationProperty Name="MRCs" Relationship="Self.FK_MRC_Supplier" FromRole="Supplier" ToRole="MRC" />
-          <NavigationProperty Name="Supplier_SLA" Relationship="Self.FK_Supplier_SLA_Supplier" FromRole="Supplier" ToRole="Supplier_SLA" />
           <NavigationProperty Name="VAT_Code" Relationship="Self.FK_Supplier_Supplier" FromRole="Supplier" ToRole="VAT_Code" />
           <NavigationProperty Name="VAT_Group" Relationship="Self.FK_Supplier_VAT_Group" FromRole="Supplier" ToRole="VAT_Group" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Purchase_Header" Relationship="PCS_Model.FK_Purchase_Header_Supplier" FromRole="Supplier" ToRole="Purchase_Header" />
           <NavigationProperty Name="Verified_Transaction" Relationship="PCS_Model.FK_Verified_Transaction_Verified_Transaction" FromRole="Supplier" ToRole="Verified_Transaction" />
+          <NavigationProperty Name="Supplier_SLA" Relationship="PCS_Model.FK_Supplier_SLA_Supplier" FromRole="Supplier" ToRole="Supplier_SLA" />
           <NavigationProperty Name="Purchase_Transaction" Relationship="PCS_Model.FK_Purchase_Transaction_Supplier" FromRole="Supplier" ToRole="Purchase_Transaction" />
         </EntityType>
         <EntityType Name="Supplier_Addition">
@@ -1100,15 +1103,6 @@
           <Property Name="File4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Account5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="File5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Supplier_SLA">
-          <Key>
-            <PropertyRef Name="Supplier_SLAId" />
-          </Key>
-          <Property Name="Supplier_SLAId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AccountId_FK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SLA_Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Supplier" Relationship="Self.FK_Supplier_SLA_Supplier" FromRole="Supplier_SLA" ToRole="Supplier" />
         </EntityType>
         <EntityType Name="Team">
           <Key>
@@ -1335,18 +1329,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Supplier_SLA_Supplier">
-          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
-          <End Role="Supplier_SLA" Type="Self.Supplier_SLA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Supplier">
-              <PropertyRef Name="AccountId" />
-            </Principal>
-            <Dependent Role="Supplier_SLA">
-              <PropertyRef Name="AccountId_FK" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Supplier_Supplier">
           <End Role="VAT_Code" Type="Self.VAT_Code" Multiplicity="1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
@@ -1386,7 +1368,6 @@
           <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
           <EntitySet Name="Supplier_Addition" EntityType="Self.Supplier_Addition" />
           <EntitySet Name="Supplier_Quotes" EntityType="Self.Supplier_Quotes" />
-          <EntitySet Name="Supplier_SLA" EntityType="Self.Supplier_SLA" />
           <EntitySet Name="Teams" EntityType="Self.Team" />
           <EntitySet Name="Terms_Condition" EntityType="Self.Terms_Condition" />
           <EntitySet Name="User_Authorise" EntityType="Self.User_Authorise" />
@@ -1440,10 +1421,6 @@
           <AssociationSet Name="FK_MRC_Supplier" Association="Self.FK_MRC_Supplier">
             <End Role="Supplier" EntitySet="Suppliers" />
             <End Role="MRC" EntitySet="MRCs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Supplier_SLA_Supplier" Association="Self.FK_Supplier_SLA_Supplier">
-            <End Role="Supplier" EntitySet="Suppliers" />
-            <End Role="Supplier_SLA" EntitySet="Supplier_SLA" />
           </AssociationSet>
           <AssociationSet Name="FK_Supplier_Supplier" Association="Self.FK_Supplier_Supplier">
             <End Role="VAT_Code" EntitySet="VAT_Code" />
@@ -1509,6 +1486,11 @@
             <End Role="Product" EntitySet="Products" />
             <End Role="MRC" EntitySet="MRCs" />
           </AssociationSet>
+          <EntitySet Name="Supplier_SLA" EntityType="PCS_Model.Supplier_SLA" />
+          <AssociationSet Name="FK_Supplier_SLA_Supplier" Association="PCS_Model.FK_Supplier_SLA_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Supplier_SLA" EntitySet="Supplier_SLA" />
+          </AssociationSet>
           <EntitySet Name="Purchase_Transaction" EntityType="PCS_Model.Purchase_Transaction" />
           <AssociationSet Name="FK_Purchase_Transaction_Cost_Center" Association="PCS_Model.FK_Purchase_Transaction_Cost_Center">
             <End Role="Cost_Center" EntitySet="Cost_Center" />
@@ -1548,6 +1530,7 @@
           <NavigationProperty Name="Department" Relationship="PCS_Model.FK_Purchase_Header_Department" FromRole="Purchase_Header" ToRole="Department" />
           <NavigationProperty Name="Supplier" Relationship="PCS_Model.FK_Purchase_Header_Supplier" FromRole="Purchase_Header" ToRole="Supplier" />
           <NavigationProperty Name="Verified_Transaction" Relationship="PCS_Model.FK_Verified_Transaction_Purchase_Header" FromRole="Purchase_Header" ToRole="Verified_Transaction" />
+          <Property Name="Quote" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Purchase_Transaction" Relationship="PCS_Model.FK_Purchase_Transaction_Purchase_Header" FromRole="Purchase_Header" ToRole="Purchase_Transaction" />
         </EntityType>
         <Association Name="FK_Purchase_Header_Cost_Center">
@@ -1783,6 +1766,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Supplier_SLA">
+          <Key>
+            <PropertyRef Name="Supplier_SLAId" />
+          </Key>
+          <Property Name="Supplier_SLAId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AccountId_FK" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SLA" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Supplier" Relationship="PCS_Model.FK_Supplier_SLA_Supplier" FromRole="Supplier_SLA" ToRole="Supplier" />
+        </EntityType>
+        <Association Name="FK_Supplier_SLA_Supplier">
+          <End Type="PCS_Model.Supplier" Role="Supplier" Multiplicity="1" />
+          <End Type="PCS_Model.Supplier_SLA" Role="Supplier_SLA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Supplier_SLA">
+              <PropertyRef Name="AccountId_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="Purchase_Transaction">
           <Key>
             <PropertyRef Name="Purchase_TransactionId" />
@@ -1795,13 +1800,14 @@
           <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ExchangeRate" Type="Decimal" Precision="18" Scale="4" />
           <Property Name="PackSize" Type="Int32" />
           <Property Name="GrossValue" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="ReceiveDate" Type="DateTime" Precision="0" />
           <Property Name="ReceiveBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="VarifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="VarifiedDate" Type="DateTime" Precision="0" />
-          <Property Name="TermsCode" Type="Int32" Nullable="false" />
+          <Property Name="TermsCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="TermsPrinted" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Suffix" Type="Int32" Nullable="false" />
           <Property Name="LpoStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -2042,15 +2048,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Supplier_SLA">
-            <EntityTypeMapping TypeName="PCS_Model.Supplier_SLA">
-              <MappingFragment StoreEntitySet="Supplier_SLA">
-                <ScalarProperty Name="Supplier_SLAId" ColumnName="Supplier_SLAId" />
-                <ScalarProperty Name="AccountId_FK" ColumnName="AccountId_FK" />
-                <ScalarProperty Name="SLA_Image" ColumnName="SLA_Image" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Teams">
             <EntityTypeMapping TypeName="PCS_Model.Team">
               <MappingFragment StoreEntitySet="Teams">
@@ -2137,6 +2134,7 @@
           <EntitySetMapping Name="Purchase_Header">
             <EntityTypeMapping TypeName="PCS_Model.Purchase_Header">
               <MappingFragment StoreEntitySet="Purchase_Header">
+                <ScalarProperty Name="Quote" ColumnName="Quote" />
                 <ScalarProperty Name="Comments" ColumnName="Comments" />
                 <ScalarProperty Name="InitalsBy" ColumnName="InitalsBy" />
                 <ScalarProperty Name="AmendedDate" ColumnName="AmendedDate" />
@@ -2222,6 +2220,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Supplier_SLA">
+            <EntityTypeMapping TypeName="PCS_Model.Supplier_SLA">
+              <MappingFragment StoreEntitySet="Supplier_SLA">
+                <ScalarProperty Name="SLA" ColumnName="SLA" />
+                <ScalarProperty Name="AccountId_FK" ColumnName="AccountId_FK" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Supplier_SLAId" ColumnName="Supplier_SLAId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Purchase_Transaction">
             <EntityTypeMapping TypeName="PCS_Model.Purchase_Transaction">
               <MappingFragment StoreEntitySet="Purchase_Transaction">
@@ -2242,6 +2250,7 @@
                 <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
                 <ScalarProperty Name="GrossValue" ColumnName="GrossValue" />
                 <ScalarProperty Name="PackSize" ColumnName="PackSize" />
+                <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />

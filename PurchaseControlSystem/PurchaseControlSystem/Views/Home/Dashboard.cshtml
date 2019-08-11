@@ -1,0 +1,476 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Collapsible sidebar using Bootstrap 4</title>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="style4.css">
+    <link href="~/Content/assets/css/style.css" rel="stylesheet" />
+    @*<link rel="stylesheet" href="../assets/css/style.css">*@
+    <link href="~/Content/assets/css/style4.css" rel="stylesheet" />
+    <!-- Font Awesome JS -->
+    <!--<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>-->
+    <!--<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>-->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar" class="active">
+            <div class="sidebar-header">
+                <h3>Project Logo</h3>
+                <strong>POS</strong>
+            </div>
+            <ul class="list-unstyled components nav nav-pills d-block" id="pills-tab">
+                <li class="nav-item">
+                    <a class="nav-link rounded-0 font-weight-bold text-white border-top font active" data-toggle="tab" href="#pills-list-menu">POs List menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded-0 font-weight-bold text-white border-top font" data-toggle="tab" href="#pills-approval">POs for Approval</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded-0 font-weight-bold text-white border-top font" data-toggle="tab" href="#pills-verification">PO Verification Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded-0 font-weight-bold text-white border-top font" data-toggle="tab" href="#pills-product-menu">Product Master Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded-0 font-weight-bold text-white border-top font" data-toggle="tab" href="#pills-supplier-sla">Supplier SLA Master</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded-0 font-weight-bold text-white border-top font" data-toggle="tab" href="#pills-supplier-mrc">Supplier MRC Master</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded-0 font-weight-bold text-white border-top font" data-toggle="tab" href="#pills-term-condition">Terms & Conditions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded-0 font-weight-bold text-white border-top font" data-toggle="tab" href="#pills-use-maintain">Supplier SLA Master</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- Page Content  -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
+                <div class="container-fluid px-0">
+                    <button type="button" id="sidebarCollapse" class="btn primary-bg text-white">
+                        <i class="fa fa-align-justify"></i>
+                        <!--<span>Toggle Sidebar</span>-->
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav w-100">
+                            <li class="nav-item dropdown ml-auto">
+                                <a class="nav-link dropdown-toggle slow" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-user"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <section class="light-bg py-5">
+                <div class="container">
+                    <div class="row bg-white py-3">
+                        <div class="col-md-12">
+                            <div class="row mx-auto tab-content" id="pills-tabContent">
+                                <!----------------------------------------   Here is Pos List menu content   ---------------------------------------->
+                                <div class="col-12 px-4 bg-white border rounded tab-pane fade show active" id="pills-list-menu" role="tabpanel" aria-labelledby="pills-list-menu">
+                                    <div class="row py-3">
+                                        <div class="col-12 bg-white ">
+                                            <h5 class="mb-0 primary-bg text-white p-2 text-center rounded">Purchase Order List</h5>
+                                        </div>
+                                        <div class="col-12 px-0">
+                                            <form class="row mx-auto">
+                                                <div class="col-md-3 my-3">
+                                                    <a href="purchase-order-create.html" class="border rounded primary-bg font py-2 text-white px-3 mx-4" target="_blank">Create Order</a>
+                                                </div>
+                                                <div class="col-md-4 ml-auto mt-2">
+                                                    <div class="d-block my-2">
+                                                        <div class="d-inline-block rounded primary-bg text-white py-1 font px-4">
+                                                            <button class="primary-bg border-0 text-white">Search By</button>
+                                                        </div>
+                                                        <div class="d-inline-block">
+                                                            <input type="text" class="form-control font rounded w-100 input-height">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 pt-2">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped table-bordered font mb-0" id="customFields">
+                                                            <thead>
+                                                                <tr class="primary-bg text-white">
+                                                                    <th class="font text-truncate text-center">Order No</th>
+                                                                    <th class="font text-truncate text-center">Supplier Code</th>
+                                                                    <th class="font text-truncate text-center">Supplier Name</th>
+                                                                    <th class="font text-truncate text-center">Currency</th>
+                                                                    <th class="font text-truncate text-center">Order Date</th>
+                                                                    <th class="font text-truncate text-center">Department</th>
+                                                                    <th class="font text-truncate text-center">Cost Center</th>
+                                                                    <th class="font text-truncate text-center">Created By</th>
+                                                                    <th class="font text-truncate text-center">Amount (CUR)</th>
+                                                                    <th class="font text-truncate text-center">Exch. Rate</th>
+                                                                    <th class="font text-truncate text-center">Base Amt (OMR)</th>
+                                                                    <th colspan="" class="font text-truncate">Status</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="p-0 text-center">span span </td>
+                                                                    <td class="p-0 text-center">span span </td>
+                                                                    <td class="p-0 text-center">span span </td>
+                                                                    <td class="p-0 text-center">span span </td>
+                                                                    <td class="p-0 text-center">span span </td>
+                                                                    <td class="p-0 text-center">span span </td>
+                                                                    <td class="p-0 text-center">span span </td>
+                                                                    <td class="p-0 text-center">span span </td>
+                                                                    <td class="p-0 text-center">span span </td>
+                                                                    <td class="p-0 text-center">span span </td>
+                                                                    <td class="p-0 text-center">span span </td>
+                                                                    <td class="p-0 text-center">Nan</td>
+                                                                    <td class="p-0 text-center bg-white border-0">
+                                                                        <table border="0" class="bg-white border-0" style="width: 225px">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td class="p-0 text-center pt-1 px-1 bg-white border-0"><a href="#" class="option-active font">Amend</a></td>
+                                                                                    <td class="p-0 text-center pt-1 px-1 bg-white border-0"><a href="#" class="option-active font">Receive</a></td>
+                                                                                    <td class="p-0 text-center pt-1 px-1 bg-white border-0"><a href="#" class="option-active font">View</a></td>
+                                                                                    <td class="p-0 text-center pt-1 px-1 bg-white border-0"><a href="#" class=" font">Print</a></td>
+                                                                                    <td class="p-0 text-center pt-1 px-1 bg-white border-0"><a href="#" class="text-danger font">Delete</a></td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="p-0 text-center">span span</td>
+                                                                    <td class="p-0 text-center">span span</td>
+                                                                    <td class="p-0 text-center">span span</td>
+                                                                    <td class="p-0 text-center">span span</td>
+                                                                    <td class="p-0 text-center">span span</td>
+                                                                    <td class="p-0 text-center">span span</td>
+                                                                    <td class="p-0 text-center">span span</td>
+                                                                    <td class="p-0 text-center">span span</td>
+                                                                    <td class="p-0 text-center">span span</td>
+                                                                    <td class="p-0 text-center">span span</td>
+                                                                    <td class="p-0 text-center">span span</td>
+                                                                    <td class="p-0 text-center">Nan</td>
+                                                                    <td class="p-0 text-center bg-white border-0">
+                                                                        <table border="0" class="bg-white border-0">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td class="p-0 text-center pt-1 px-1 bg-white border-0"><a href="#" class="disabled font">Amend</a></td>
+                                                                                    <td class="p-0 text-center pt-1 px-1 bg-white border-0"><a href="#" class="disabled font">Receive</a></td>
+                                                                                    <td class="p-0 text-center pt-1 px-1 bg-white border-0"><a href="#" class="option-active font">View</a></td>
+                                                                                    <td class="p-0 text-center pt-1 px-1 bg-white border-0"><a href="#" class="disabled font">Print</a></td>
+                                                                                    <td class="p-0 text-center pt-1 px-1 bg-white border-0"><a href="#" class="text-danger font">Delete</a></td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!----------------------------------------   Here is POs for Approval   ---------------------------------------->
+                                <div class="col-12 bg-white border rounded tab-pane fade" id="pills-approval">
+                                    <div class="row bg-white py-3">
+                                        <div class="col-12">
+                                            <h5 class="mb-0 primary-bg text-white p-2 text-center rounded">Purchase Order For Verification</h5>
+                                        </div>
+                                        <form class="w-100">
+                                            <div class="col-md-4 ml-auto mt-2">
+                                                <div class="d-block my-2">
+                                                    <div class="d-inline-block rounded primary-bg text-white py-1 font px-4">
+                                                        <button class="primary-bg border-0 text-white">Search By</button>
+                                                    </div>
+                                                    <div class="d-inline-block">
+                                                        <input type="text" class="form-control font rounded w-100 input-height">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 pt-2">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped table-bordered font mb-0">
+                                                        <thead>
+                                                            <tr class="primary-bg text-white">
+                                                                <th class="font text-truncate text-center">Order No</th>
+                                                                <th class="font text-truncate text-center">Supplier Code</th>
+                                                                <th class="font text-truncate text-center">Supplier Name</th>
+                                                                <th class="font text-truncate text-center">Currency</th>
+                                                                <th class="font text-truncate text-center">Order Date</th>
+                                                                <th class="font text-truncate text-center">Department</th>
+                                                                <th class="font text-truncate text-center">Cost Center</th>
+                                                                <th class="font text-truncate text-center">Created By</th>
+                                                                <th class="font text-truncate text-center">Amount (CUR)</th>
+                                                                <th class="font text-truncate text-center">Exch. Rate</th>
+                                                                <th class="font text-truncate text-center">Base Amt (OMR)</th>
+                                                                <th colspan="" class="font text-truncate">Status</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">span span</span> </td>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">span span</span> </td>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">span span</span> </td>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">span span</span> </td>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">span span</span> </td>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">span span</span> </td>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">span span</span> </td>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">span span</span> </td>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">span span</span> </td>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">span span</span> </td>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">span span</span> </td>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">Nan</span></td>
+                                                                <td class="text-center"><a href="#" class="nav-link px-3 py-1 primary-text font" style="color: #007bff;width: 55px;padding: 0 !important;">View</a></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">Nan</td>
+                                                                <td class="text-center"><a href="#" class="nav-link px-3 py-1 primary-text font" style="color: #007bff;width: 55px;padding: 0 !important;">View</a></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!----------------------------------------   Here is POs for Verification   ---------------------------------------->
+                                <div class="col-12 px-4 bg-white border rounded tab-pane fade" id="pills-verification">
+                                    <div class="row bg-white py-3">
+                                        <div class="col-12">
+                                            <h5 class="mb-0 primary-bg text-white p-2 text-center rounded">Purchase Order For Verification</h5>
+                                        </div>
+                                        <form class="w-100">
+                                            <div class="col-md-4 ml-auto mt-2">
+                                                <div class="d-block my-2">
+                                                    <div class="d-inline-block rounded primary-bg text-white py-1 font px-4">
+                                                        <button class="primary-bg border-0 text-white">Search By</button>
+                                                    </div>
+                                                    <div class="d-inline-block">
+                                                        <input type="text" class="form-control font rounded w-100 input-height">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 pt-2">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped table-bordered font mb-0">
+                                                        <thead>
+                                                            <tr class="primary-bg text-white">
+                                                                <th class="font text-truncate text-center">Order No</th>
+                                                                <th class="font text-truncate text-center">Supplier Code</th>
+                                                                <th class="font text-truncate text-center">Supplier Name</th>
+                                                                <th class="font text-truncate text-center">Currency</th>
+                                                                <th class="font text-truncate text-center">Order Date</th>
+                                                                <th class="font text-truncate text-center">Department</th>
+                                                                <th class="font text-truncate text-center">Cost Center</th>
+                                                                <th class="font text-truncate text-center">Created By</th>
+                                                                <th class="font text-truncate text-center">Amount (CUR)</th>
+                                                                <th class="font text-truncate text-center">Exch. Rate</th>
+                                                                <th class="font text-truncate text-center">Base Amt (OMR)</th>
+                                                                <th colspan="" class="font text-truncate">Status</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">span span</span> </td>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">span span</span> </td>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">span span</span> </td>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">span span</span> </td>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">span span</span> </td>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">span span</span> </td>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">span span</span> </td>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">span span</span> </td>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">span span</span> </td>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">span span</span> </td>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">span span</span> </td>
+                                                                <td class="p-0 text-center"><span class="font py-1 px-2">Nan</span></td>
+                                                                <td class="text-center"><a href="#" class="nav-link px-3 py-1 primary-text font" style="color: #007bff;width: 55px;padding: 0 !important;">View</a></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">Nan</td>
+                                                                <td class="text-center"><a href="#" class="nav-link px-3 py-1 primary-text font" style="color: #007bff;width: 55px;padding: 0 !important;">View</a></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!----------------------------------------   Here is POs for Product Master Menu  ---------------------------------------->
+                                <div class="col-12 bg-white border rounded tab-pane fade" id="pills-product-menu">
+                                    <div class="row bg-white py-3">
+                                        <div class="col-12">
+                                            <h5 class="mb-0 primary-bg text-white p-2 text-center rounded">Purchase Order For Verification</h5>
+                                        </div>
+                                        <form class="w-100 row">
+                                            <div class="col-md-4 ml-auto mt-2">
+                                                <div class="d-block my-2">
+                                                    <div class="d-inline-block rounded primary-bg text-white py-1 font px-4">
+                                                        <button class="primary-bg border-0 text-white">Search By</button>
+                                                    </div>
+                                                    <div class="d-inline-block">
+                                                        <input type="text" class="form-control font rounded w-100 input-height">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 my-3 ml-auto">
+                                                <a href="purchase-order-create.html" class="border rounded primary-bg font py-2 text-white px-4 mx-4" target="_blank">Add</a>
+                                            </div>
+                                            <div class="col-md-12 pt-2">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped table-bordered font mb-0" id="">
+                                                        <thead>
+                                                            <tr class="primary-bg text-white">
+                                                                <th class="font text-truncate text-center">Product ID</th>
+                                                                <th class="font text-truncate text-center">Product</th>
+                                                                <th class="font text-truncate text-center">Product Catg</th>
+                                                                <th class="font text-truncate text-center">Expense Code</th>
+                                                                <th class="font text-truncate text-center">Expense Description</th>
+                                                                <th class="font text-truncate text-center">Product Type</th>
+                                                                <th class="font text-truncate text-center">Pack Size</th>
+                                                                <th class="font text-truncate text-center">Created By</th>
+                                                                <th class="font text-truncate text-center">List Amend</th>
+                                                                <th class="font text-truncate text-center">List Amend By</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="p-0 text-center">span span </td>
+                                                                <td class="p-0 text-center">span span </td>
+                                                                <td class="p-0 text-center">span span </td>
+                                                                <td class="p-0 text-center">span span </td>
+                                                                <td class="p-0 text-center">span span </td>
+                                                                <td class="p-0 text-center">span span </td>
+                                                                <td class="p-0 text-center">span span </td>
+                                                                <td class="p-0 text-center">span span </td>
+                                                                <td class="p-0 text-center">span span </td>
+                                                                <td class="p-0 text-center">span span </td>
+                                                                <td class="p-0 text-center bg-white border-0">
+                                                                    <table border="0" class="bg-white border-0" style="width: 155px;">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td class="p-0 text-center pt-1 px-1 bg-white border-0"><a href="#" class="primary-text font"><u>History</u></a></td>
+                                                                                <td class="p-0 text-center pt-1 px-1 bg-white border-0"><a href="#" class="primary-text font"><u>Amend</u></a></td>
+                                                                                <td class="p-0 text-center pt-1 px-1 bg-white border-0"><a href="#" class="primary-text font"><u>Delete</u></a></td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center">span span</td>
+                                                                <td class="p-0 text-center bg-white border-0">
+                                                                    <table border="0" class="bg-white border-0" style="width: 155px;">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td class="p-0 text-center pt-1 px-1 bg-white border-0"><a href="#" class="primary-text font"><u>History</u></a></td>
+                                                                                <td class="p-0 text-center pt-1 px-1 bg-white border-0"><a href="#" class="primary-text font"><u>Amend</u></a></td>
+                                                                                <td class="p-0 text-center pt-1 px-1 bg-white border-0"><a href="#" class="primary-text font"><u>Delete</u></a></td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!----------------------------------------   Here is POs for Supplier SLA Master  ---------------------------------------->
+                                <div class="col-12 bg-white border rounded tab-pane fade" id="pills-supplier-sla">
+                                    <h5 class="primary-text pt-3 pb-2 font-weight-bold">Supplier SLA Master</h5>
+                                </div>
+                                <div class="col-12 px-4 bg-white border rounded tab-pane fade" id="pills-supplier-mrc">
+                                    <h5 class="primary-text pt-3 pb-2 font-weight-bold">Supplier MRC Master</h5>
+                                </div>
+                                <div class="col-12 bg-white border rounded tab-pane fade" id="pills-term-condition">
+                                    <h5 class="primary-text pt-3 pb-2 font-weight-bold">Terms & Conditions</h5>
+                                </div>
+                                <div class="col-12 bg-white border rounded tab-pane fade" id="pills-use-maintain">
+                                    <h5 class="primary-text pt-3 pb-2 font-weight-bold">Supplier SLA Master</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--            <h2>Collapsible Sidebar Using Bootstrap 4</h2>-->
+            <!--            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
+            <!--            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
+            <!--            <div class="line"></div>-->
+            <!--            <h2>Lorem Ipsum Dolor</h2>-->
+            <!--            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
+            <!--            <div class="line"></div>-->
+            <!--            <h2>Lorem Ipsum Dolor</h2>-->
+            <!--            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
+            <!--            <div class="line"></div>-->
+            <!--            <h3>Lorem Ipsum Dolor</h3>-->
+            <!--            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
+        </div>
+        <div class="overlay"></div>
+    </div>
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script type="text/javascript">$(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });</script>
+</body>
+</html>

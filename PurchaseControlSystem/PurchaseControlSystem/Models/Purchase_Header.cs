@@ -55,6 +55,8 @@ public partial class Purchase_Header
 
     public string Comments { get; set; }
 
+    public string Quote { get; set; }
+
 
 
     public virtual Cost_Center Cost_Center { get; set; }
